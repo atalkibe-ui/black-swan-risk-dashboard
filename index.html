@@ -103,7 +103,7 @@
           <div class="gauge-value"><strong id="composite">68,9</strong><span id="band">WATCH</span></div>
         </div>
         <div>
-          <h2>Композит на выбранную дату</h2>
+          <h2>Экономический композит на выбранную дату</h2>
           <strong id="status-copy">Повышенный уровень наблюдения.</strong>
           <p class="muted" id="snapshot-date">Дата среза: 05.10.2026.</p>
           <p class="formula-line" id="calculation">B = 60,3; H1 = 71; H2 = 69; C = 68,90.</p>
@@ -116,8 +116,8 @@
           <table class="observations">
             <thead><tr><th>Показатель</th><th>Последнее значение</th><th>Период</th><th>Использование</th></tr></thead>
             <tbody>
-              <tr><td>GSCPI</td><td>-0,09</td><td>июль 2024</td><td>25% Global Financial Stress; ряд требует обновления.</td></tr>
-              <tr><td>РЭОК Казахстана</td><td>132,39</td><td>август 2026</td><td>25% KZT Pressure; декабрь 2016 = 100.</td></tr>
+              <tr><td>GSCPI</td><td>-0,09</td><td>июль 2024</td><td>15% условий торговли и внешнего спроса; ряд требует обновления.</td></tr>
+              <tr><td>РЭОК Казахстана</td><td>132,39</td><td>август 2026</td><td>20% валютной ликвидности и резервов; декабрь 2016 = 100.</td></tr>
               <tr><td>Доля нефти в товарном экспорте</td><td>50,5%</td><td>2025</td><td>Структурная нефтяная уязвимость.</td></tr>
               <tr><td>USD/KZT</td><td>440,49</td><td>конец сентября 2026</td><td>Локальная проверка направления валютного давления.</td></tr>
               <tr><td>ИПЦ Казахстана</td><td>9,3% г/г</td><td>сентябрь 2026</td><td>Проверка канала импортируемой инфляции.</td></tr>
@@ -127,16 +127,16 @@
       </div>
     </section>
 
-    <section class="grid scores" aria-label="Пять индикаторов на выбранную дату">
-      <article class="panel score"><div class="score-head"><h3>Global Financial Stress</h3><div class="score-value" id="score-0">71</div></div><div class="bar watch" id="bar-0"><span style="width:71%"></span></div><p class="small">45% VIX + 30% UST 10Y + 25% GSCPI.</p><p class="small muted" id="date-0">Дата: 05.10.2026</p></article>
-      <article class="panel score"><div class="score-head"><h3>Kazakhstan External Pressure</h3><div class="score-value" id="score-1">60</div></div><div class="bar watch" id="bar-1"><span style="width:60%"></span></div><p class="small">40% G + 35% Brent downside + 25% Brent volatility.</p><p class="small muted" id="date-1">Дата: 05.10.2026</p></article>
-      <article class="panel score"><div class="score-head"><h3>KZT Pressure</h3><div class="score-value" id="score-2">35</div></div><div class="bar normal" id="bar-2"><span style="width:35%"></span></div><p class="small">30% Brent + 25% VIX + 20% UST 10Y + 25% РЭОК.</p><p class="small muted" id="date-2">Дата: 05.10.2026</p></article>
-      <article class="panel score"><div class="score-head"><h3>Oil Fiscal Stress</h3><div class="score-value" id="score-3">69</div></div><div class="bar watch" id="bar-3"><span style="width:69%"></span></div><p class="small">60% Brent downside + 40% Brent volatility.</p><p class="small muted" id="date-3">Дата: 05.10.2026</p></article>
-      <article class="panel score"><div class="score-head"><h3>Import Inflation Pressure</h3><div class="score-value" id="score-4">50</div></div><div class="bar normal" id="bar-4"><span style="width:50%"></span></div><p class="small">45% K + 35% Brent downside + 20% UST 10Y.</p><p class="small muted" id="date-4">Дата: 05.10.2026</p></article>
+    <section class="grid scores" aria-label="Пять экономических каналов на выбранную дату">
+      <article class="panel score"><div class="score-head"><h3>Global Financial Conditions</h3><div class="score-value" id="score-0">71</div></div><div class="bar watch" id="bar-0"><span style="width:71%"></span></div><p class="small">VIX, MOVE, US HY OAS и DXY без повторения в других лучах.</p><p class="small muted" id="date-0">Дата: 05.10.2026</p></article>
+      <article class="panel score"><div class="score-head"><h3>Terms of Trade &amp; External Demand</h3><div class="score-value" id="score-1">60</div></div><div class="bar watch" id="bar-1"><span style="width:60%"></span></div><p class="small">Brent, экспортная корзина, спрос Китая и GSCPI.</p><p class="small muted" id="date-1">Дата: 05.10.2026</p></article>
+      <article class="panel score"><div class="score-head"><h3>External Funding Stress</h3><div class="score-value" id="score-2">35</div></div><div class="bar normal" id="bar-2"><span style="width:35%"></span></div><p class="small">Суверенный спред Казахстана, EMBI, реальные UST и рефинансирование.</p><p class="small muted" id="date-2">Дата: 05.10.2026</p></article>
+      <article class="panel score"><div class="score-head"><h3>FX &amp; Reserve Pressure</h3><div class="score-value" id="score-3">69</div></div><div class="bar watch" id="bar-3"><span style="width:69%"></span></div><p class="small">USD/KZT, резервы, РЭОК и валютные интервенции.</p><p class="small muted" id="date-3">Дата: 05.10.2026</p></article>
+      <article class="panel score"><div class="score-head"><h3>Domestic Macro-Fiscal Stress</h3><div class="score-value" id="score-4">50</div></div><div class="bar normal" id="bar-4"><span style="width:50%"></span></div><p class="small">Бюджетный разрыв, инфляция, выпуск, банки и трансферты Нацфонда.</p><p class="small muted" id="date-4">Дата: 05.10.2026</p></article>
     </section>
 
     <section class="radar-section">
-      <div class="radar-title"><h2>Профиль композитных индикаторов</h2><span class="small muted">Шкала риска: 0–100</span></div>
+      <div class="radar-title"><h2>Профиль экономических каналов</h2><span class="small muted">Шкала риска: 0–100</span></div>
       <div class="radar-layout">
         <figure>
           <svg id="radar" role="img" aria-labelledby="radar-title radar-desc"><title id="radar-title">Паутинная диаграмма пяти индикаторов</title><desc id="radar-desc"></desc><g id="grid"></g><g id="selected-shape"></g><g id="current-shape"></g><g id="labels"></g></svg>
@@ -156,10 +156,10 @@
     <section class="event-section" aria-labelledby="deescalation-heading">
       <div class="event-heading">
         <div>
-          <h2 id="deescalation-heading">Индекс деэскалации активных боевых действий</h2>
-          <p class="muted">Совмещает рыночные ожидания и текстовые сигналы переговорного процесса. Чем выше значение, тем сильнее согласованный сигнал возможной деэскалации.</p>
+          <h2 id="deescalation-heading">Индекс деэскалации Россия–Украина</h2>
+          <p class="muted">Фактический модуль будущего политического композита. Совмещает рыночные ожидания и текстовые сигналы переговорного процесса; чем выше значение, тем сильнее сигнал возможной деэскалации.</p>
         </div>
-        <div class="meta"><span class="tag">Недельная частота</span><span class="tag" id="deescalation-data-status">Пилотная модель</span></div>
+        <div class="meta"><span class="tag">Политический модуль</span><span class="tag">Недельная частота</span><span class="tag" id="deescalation-data-status">Пилотная модель</span></div>
       </div>
 
       <div class="grid event-overview">
@@ -226,20 +226,27 @@
           <p class="small muted">Геометрическая часть повышает индекс только при согласованном финансовом и текстовом сигнале.</p>
         </div>
       </div>
+      <div class="panel" style="margin-top:14px">
+        <h2>Целевая формула политического риска для Казахстана</h2>
+        <p class="formula-line">P₀ = 0,35K + 0,25R + 0,20G + 0,20S</p>
+        <p class="formula-line">O* = (0,55O<sub>RU</sub> + 0,45O<sub>ME</sub>) × (1 − K/100) × (1 − S/100)</p>
+        <p class="formula-line">P = clip(0; 100; P₀ − 0,20O*)</p>
+        <p class="small muted">K — риск вовлечения Казахстана; R — региональное распространение; G — общемировая эскалация вне России и Ближнего Востока; S — санкционно-логистическое давление. Эскалация вокруг России или Ближнего Востока снижает политический риск через канал возможностей O* только при низком прямом вовлечении Казахстана и ограниченных санкционных потерях.</p>
+      </div>
       <div class="note"><strong>Предварительный отбор:</strong> из паутинки исключены Energy risk, Implementation, Mediation и Rhetoric Restraint. Brent показал наиболее нестабильный знак реакции; остальные три текстовых показателя чаще запаздывают либо создают ложные сигналы. Полный статистический отбор требует фактической истории всех компонентов.</div>
     </section>
 
     <section class="grid method">
       <div class="panel">
-        <h2>Формула композита</h2>
-        <p class="formula-line">B = 0,30G + 0,25E + 0,20O + 0,15K + 0,10I</p>
-        <p class="formula-line">H1, H2 = два максимальных значения среди G, E, K, O, I</p>
-        <p class="formula-line">C = 0,60H1 + 0,25H2 + 0,15B</p>
+        <h2>Формула экономического композита</h2>
+        <p class="formula-line">B<sub>E</sub> = 0,25F + 0,25T + 0,20C + 0,15X + 0,15D</p>
+        <p class="formula-line">H1, H2 = два максимальных значения среди F, T, C, X, D</p>
+        <p class="formula-line">E = 0,50H1 + 0,30H2 + 0,20B<sub>E</sub></p>
         <div class="note">Месячные GSCPI и РЭОК удерживаются неизменными в недельных расчетах до следующего доступного месячного значения.</div>
       </div>
       <div class="panel">
         <h2>Ограничения</h2>
-        <p>Исторические контуры пока демонстрационные. Для производственного расчета необходимы регулярные обновления VIX, Brent, UST, GSCPI, USD/KZT, резервов и интервенций, суверенных спредов и импортных цен.</p>
+        <p>Экономический блок показывает целевую структуру, но его значения и исторические контуры пока демонстрационные и не пересчитаны по новым формулам. Для производственного расчета необходимы регулярные обновления VIX, MOVE, HY OAS, Brent, GSCPI, USD/KZT, резервов и интервенций, суверенных спредов и внутренних макрофискальных данных.</p>
         <p class="muted small">Композит является индикатором режима риска, а не вероятностью наступления black swan event.</p>
       </div>
     </section>
@@ -247,11 +254,11 @@
   <script>
     (() => {
       const axes = [
-        ['Глобальный стресс',['Глобальный','стресс']],
-        ['Внешнее давление',['Внешнее','давление']],
-        ['Давление на тенге',['Давление','на тенге']],
-        ['Нефтяной стресс',['Нефтяной','стресс']],
-        ['Импортная инфляция',['Импортная','инфляция']]
+        ['Глобальные финансовые условия',['Глобальные','финусловия']],
+        ['Условия торговли и внешний спрос',['Торговля и','внешний спрос']],
+        ['Внешнее фондирование',['Внешнее','фондирование']],
+        ['Валютная ликвидность и резервы',['Валюта и','резервы']],
+        ['Внутренний макрофискальный стресс',['Внутренний','макрофискальный','стресс']]
       ];
       const current = { date:'2026-10-12', values:[74,62,34,71,48], source:'pilot' };
       const snapshots = [
@@ -261,19 +268,19 @@
         {date:'2026-09-28',values:[69,59,36,70,51]}, {date:'2026-10-05',values:[71,60,35,69,50]},
         {...current,values:[...current.values]}
       ];
-      const weights=[.30,.25,.15,.20,.10], slider=document.getElementById('period'), svg=document.getElementById('radar');
+      const weights=[.25,.25,.20,.15,.15], slider=document.getElementById('period'), svg=document.getElementById('radar');
       const ns='http://www.w3.org/2000/svg', short=new Intl.DateTimeFormat('ru-RU',{timeZone:'UTC'}), long=new Intl.DateTimeFormat('ru-RU',{dateStyle:'long',timeZone:'UTC'});
       const date=v=>new Date(v+'T00:00:00Z'), fmt=v=>short.format(date(v));
       const make=(tag,attrs={},text)=>{const n=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,v));if(text!==undefined)n.textContent=text;return n;};
       const band=v=>v>=80?['stress','STRESS','var(--red)','Высокий уровень стресса.']:v>=60?['watch','WATCH','var(--amber)','Повышенный уровень наблюдения.']:['normal','NORMAL','var(--green)','Нормальный уровень риска.'];
-      const composite=values=>{const B=values.reduce((s,v,i)=>s+v*weights[i],0),sorted=[...values].sort((a,b)=>b-a),C=.60*sorted[0]+.25*sorted[1]+.15*B;return{B,H1:sorted[0],H2:sorted[1],C};};
+      const composite=values=>{const B=values.reduce((s,v,i)=>s+v*weights[i],0),sorted=[...values].sort((a,b)=>b-a),E=.50*sorted[0]+.30*sorted[1]+.20*B;return{B,H1:sorted[0],H2:sorted[1],E};};
       const updateSummary=s=>{
-        const r=composite(s.values), b=band(r.C), angle=(r.C*3.6).toFixed(1), d=fmt(s.date);
-        document.getElementById('composite').textContent=r.C.toFixed(1).replace('.',',');
+        const r=composite(s.values), b=band(r.E), angle=(r.E*3.6).toFixed(1), d=fmt(s.date);
+        document.getElementById('composite').textContent=r.E.toFixed(1).replace('.',',');
         document.getElementById('band').textContent=b[1]; document.getElementById('status-copy').textContent=b[3];
         document.getElementById('snapshot-date').textContent=`Дата среза: ${d}.`;
-        document.getElementById('calculation').textContent=`B = ${r.B.toFixed(1).replace('.',',')}; H1 = ${r.H1}; H2 = ${r.H2}; C = ${r.C.toFixed(2).replace('.',',')}.`;
-        const gauge=document.getElementById('gauge'); gauge.style.background=`conic-gradient(${b[2]} 0deg ${angle}deg,#e8ece7 ${angle}deg 360deg)`; gauge.setAttribute('aria-label',`Композитный индекс ${r.C.toFixed(1)} на ${d}`);
+        document.getElementById('calculation').textContent=`B_E = ${r.B.toFixed(1).replace('.',',')}; H1 = ${r.H1}; H2 = ${r.H2}; E = ${r.E.toFixed(2).replace('.',',')}.`;
+        const gauge=document.getElementById('gauge'); gauge.style.background=`conic-gradient(${b[2]} 0deg ${angle}deg,#e8ece7 ${angle}deg 360deg)`; gauge.setAttribute('aria-label',`Экономический индекс ${r.E.toFixed(1)} на ${d}`);
         s.values.forEach((v,i)=>{const sb=band(v);document.getElementById(`score-${i}`).textContent=v;document.getElementById(`bar-${i}`).className=`bar ${sb[0]}`;document.querySelector(`#bar-${i} span`).style.width=`${v}%`;document.getElementById(`date-${i}`).textContent=`Дата: ${d}`;});
       };
       function render(){
@@ -287,7 +294,7 @@
         const labels=document.getElementById('labels');labels.replaceChildren();[25,50,75,100].forEach(l=>labels.append(make('text',{x:cx+6,y:cy-radius*l/100+4,fill:'#60707c','font-size':10},l)));axes.forEach((a,i)=>{const p=point(i,radius+43),t=make('text',{x:p.x,y:p.y-7,'text-anchor':'middle','font-size':12,fill:'#344852'});a[1].forEach((line,j)=>t.append(make('tspan',{x:p.x,dy:j?15:0},line)));labels.append(t);});
         document.getElementById('period-output').textContent=fmt(selected.date);document.getElementById('selected-legend').textContent=`Выбранный: ${fmt(selected.date)} (${source})`;slider.setAttribute('aria-valuetext',`${long.format(date(selected.date))}, ${source==='пилот'?'пилотные':'демонстрационные'} данные`);
         document.getElementById('comparison').replaceChildren(...axes.map((a,i)=>{const tr=document.createElement('tr'),delta=current.values[i]-selected.values[i];[a[0],current.values[i],selected.values[i],delta>0?`+${delta}`:String(delta)].forEach((v,j)=>{const c=document.createElement(j?'td':'th');c.textContent=v;if(!j)c.scope='row';if(j===3)c.className=delta>0?'increase':delta<0?'decrease':'';tr.append(c);});return tr;}));
-        document.getElementById('radar-desc').textContent=`Текущий срез ${fmt(current.date)} и выбранный срез ${fmt(selected.date)}. Композит выбранной даты ${composite(selected.values).C.toFixed(1)}.`;
+        document.getElementById('radar-desc').textContent=`Текущий срез ${fmt(current.date)} и выбранный срез ${fmt(selected.date)}. Экономический композит выбранной даты ${composite(selected.values).E.toFixed(1)}.`;
       }
       slider.addEventListener('input',render);new ResizeObserver(render).observe(svg);render();
     })();
