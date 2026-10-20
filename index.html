@@ -91,10 +91,9 @@
     .note { margin-top:12px; padding:11px 12px; border-left:4px solid var(--amber); background:#fff8e8; font-size:12px; }
     .index-section { padding-bottom:30px; }
     .index-section + .index-section { margin-top:8px; padding-top:26px; border-top:3px solid #263b46; }
-    .index-heading { display:flex; justify-content:space-between; gap:20px; align-items:start; margin-bottom:14px; }
-    .index-heading p { max-width:850px; }
     .index-layout { display:grid; grid-template-columns:minmax(250px,.68fr) minmax(470px,1.55fr) minmax(290px,.77fr); gap:14px; align-items:stretch; }
     .index-summary { min-height:500px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+    .index-summary > h2 { margin:0 0 22px; color:var(--ink); }
     .index-summary .gauge { flex:0 0 auto; }
     .index-summary-copy { margin-top:22px; width:100%; }
     .index-summary-copy .formula-line { text-align:left; }
@@ -123,7 +122,7 @@
     .bar.text span { background:var(--teal); }
     @media(max-width:1050px) { .overview,.radar-layout,.method,.event-overview,.event-formulas,.natural-overview { grid-template-columns:1fr; } .scores,.natural-modules { grid-template-columns:repeat(2,minmax(0,1fr)); } .controls { padding-left:0; border-left:0; } }
     @media(max-width:1120px) { .index-layout { grid-template-columns:260px minmax(0,1fr); } .index-sidebar { grid-column:1/-1; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); grid-template-rows:auto; } .indicator-grid.five { grid-template-columns:repeat(3,minmax(0,1fr)); } }
-    @media(max-width:760px) { .index-heading { display:block; } .index-layout { grid-template-columns:minmax(0,1fr); } .index-sidebar { grid-column:auto; grid-template-columns:minmax(0,1fr); } .index-summary { min-height:0; } .index-radar-panel { min-height:0; } .indicator-grid.five,.indicator-grid.eight { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media(max-width:760px) { .index-layout { grid-template-columns:minmax(0,1fr); } .index-sidebar { grid-column:auto; grid-template-columns:minmax(0,1fr); } .index-summary { min-height:0; } .index-radar-panel { min-height:0; } .indicator-grid.five,.indicator-grid.eight { grid-template-columns:repeat(2,minmax(0,1fr)); } }
     @media(max-width:620px) { header,main { padding-left:15px; padding-right:15px; } h1 { font-size:21px; } .composite,.event-composite { grid-template-columns:1fr; } .scores,.natural-modules { grid-template-columns:1fr; } .index-radar-panel #radar,.index-radar-panel #deescalation-radar,.index-radar-panel #natural-radar { height:350px; } .radar-layout { grid-template-columns:minmax(0,1fr); } .table-wrap { overflow-x:auto; } .observations { min-width:650px; } .natural-overview .observations { min-width:0; table-layout:fixed; } .natural-overview .observations td:first-child { width:40%; overflow-wrap:anywhere; } .event-heading { display:block; } .subindices { grid-template-columns:1fr; } .subindex + .subindex { border-left:0; border-top:1px solid var(--line); } .indicator-grid.five,.indicator-grid.eight { grid-template-columns:minmax(0,1fr); } .event-list li { grid-template-columns:68px minmax(0,1fr); } }
   </style>
 </head>
@@ -138,14 +137,11 @@
   </header>
   <main>
     <section class="index-section" aria-labelledby="economic-heading">
-      <div class="index-heading">
-        <div><h2 id="economic-heading">Экономический индекс</h2><p class="muted">Раннее предупреждение о глобальном финансовом, внешнеторговом, валютном и внутреннем макроэкономическом стрессе для Казахстана.</p></div>
-        <div class="meta"><span class="tag">Недельная частота</span><span class="tag">5 показателей</span><span class="tag">Пилотная модель</span></div>
-      </div>
       <div class="index-layout">
         <div class="panel index-summary">
+          <h2 id="economic-heading">Экономический индекс</h2>
           <div class="gauge" id="gauge" aria-label="Экономический индекс 69,1"><div class="gauge-value"><strong id="composite">69,1</strong><span id="band">WATCH</span></div></div>
-          <div class="index-summary-copy"><h3>Значение на выбранную дату</h3><strong id="status-copy">Повышенный уровень наблюдения.</strong><p class="muted" id="snapshot-date">Дата среза: 05.10.2026.</p><p class="formula-line" id="calculation">B_E = 64,5; H1 = 71; H2 = 69; E = 69,09.</p><p class="small muted">Индекс пересчитывается синхронно с ползунком.</p></div>
+          <div class="index-summary-copy"><p class="muted" id="snapshot-date">Дата среза: 05.10.2026.</p><p class="formula-line" id="calculation">B_E = 64,5; H1 = 71; H2 = 69; E = 69,09.</p><p class="small muted">Индекс пересчитывается синхронно с ползунком.</p></div>
         </div>
         <div class="panel index-radar-panel">
           <div class="radar-title"><h3>Профиль экономических каналов</h3><span class="small muted">Риск: 0–100</span></div>
@@ -167,14 +163,11 @@
     </section>
 
     <section class="index-section" aria-labelledby="deescalation-heading">
-      <div class="index-heading">
-        <div><h2 id="deescalation-heading">Политический индекс</h2><p class="muted">Пилотная версия отражает согласованность рыночных и текстовых сигналов деэскалации Россия–Украина. Более высокое значение означает более сильный сигнал деэскалации.</p></div>
-        <div class="meta"><span class="tag">Недельная частота</span><span class="tag">8 показателей</span><span class="tag" id="deescalation-data-status">Пилотная модель</span></div>
-      </div>
       <div class="index-layout">
         <div class="panel index-summary">
+          <h2 id="deescalation-heading">Политический индекс</h2>
           <div class="gauge" id="deescalation-gauge" aria-label="Политический индекс"><div class="gauge-value"><strong id="deescalation-composite">0,0</strong><span id="deescalation-band">LOW</span></div></div>
-          <div class="index-summary-copy"><h3>Значение на выбранную дату</h3><strong id="deescalation-status">Сигнал рассчитывается.</strong><p class="muted" id="deescalation-date">Дата среза: —</p><p class="formula-line" id="deescalation-calculation">M = 0,0; T = 0,0; D = 0,0.</p><p class="small muted">Индекс требует согласованного финансового и текстового сигнала.</p></div>
+          <div class="index-summary-copy"><p class="muted" id="deescalation-date">Дата среза: —</p><p class="formula-line" id="deescalation-calculation">M = 0,0; T = 0,0; D = 0,0.</p><p class="small muted">Индекс требует согласованного финансового и текстового сигнала.</p></div>
         </div>
         <div class="panel index-radar-panel">
           <div class="radar-title"><h3>Финансово-текстовый профиль</h3><span class="small muted">Деэскалация: 0–100</span></div>
@@ -199,22 +192,13 @@
     </section>
 
     <section class="index-section" aria-labelledby="natural-heading">
-      <div class="index-heading">
-        <div>
-          <h2 id="natural-heading">Природно-биологический индекс</h2>
-          <p class="muted">Композит ранних пандемических и паводковых сигналов с отдельной сезонной оценкой тяжести последствий землетрясений. Все пять шкал направлены одинаково: 100 означает более высокий риск для Казахстана.</p>
-        </div>
-        <div class="meta"><span class="tag">Открытые данные</span><span class="tag">Недельная частота</span><span class="tag">История с 2024 года</span></div>
-      </div>
-
       <div class="index-layout">
         <div class="panel index-summary">
+          <h2 id="natural-heading">Природно-биологический индекс</h2>
           <div class="gauge" id="natural-gauge" aria-label="Природно-биологический индекс 68,4">
             <div class="gauge-value"><strong id="natural-composite">68,4</strong><span id="natural-band">HIGH</span></div>
           </div>
           <div class="index-summary-copy">
-            <h3>Совокупный риск на выбранную дату</h3>
-            <strong id="natural-status">Высокий уровень наблюдения.</strong>
             <p class="muted" id="natural-date">Дата среза: 11.10.2026.</p>
             <p class="formula-line" id="natural-calculation">P = 73,9; B_N = 61,8; H = 73,9; N = 68,4.</p>
             <p class="formula-line">P = 0,60O + 0,25R + 0,15M<br>B<sub>N</sub> = 0,65P + 0,25F + 0,10Q<br>N = 0,55 × max(P,F) + 0,45B<sub>N</sub></p>
@@ -288,7 +272,7 @@
       const updateSummary=s=>{
         const r=composite(s.values), b=band(r.E), angle=(r.E*3.6).toFixed(1), d=fmt(s.date);
         document.getElementById('composite').textContent=r.E.toFixed(1).replace('.',',');
-        document.getElementById('band').textContent=b[1]; document.getElementById('status-copy').textContent=b[3];
+        document.getElementById('band').textContent=b[1];
         document.getElementById('snapshot-date').textContent=`Дата среза: ${d}.`;
         document.getElementById('calculation').textContent=`B_E = ${r.B.toFixed(1).replace('.',',')}; H1 = ${r.H1}; H2 = ${r.H2}; E = ${r.E.toFixed(2).replace('.',',')}.`;
         const gauge=document.getElementById('gauge'); gauge.style.background=`conic-gradient(${b[2]} 0deg ${angle}deg,#e8ece7 ${angle}deg 360deg)`; gauge.setAttribute('aria-label',`Экономический индекс ${r.E.toFixed(1)} на ${d}`);
@@ -330,7 +314,6 @@
       document.getElementById('deescalation-start-date').textContent=fmt(snapshots[0].date);
       document.getElementById('deescalation-end-date').textContent=fmt(current.date);
       if(current.source==='factual'){
-        document.getElementById('deescalation-data-status').textContent='Открытые фактические данные';
         document.getElementById('deescalation-data-note').textContent='Фактические недельные профили рассчитаны из рыночных котировок Yahoo Finance и датированных публикаций Google News RSS. Нормирование рыночных сигналов использует только предшествующие наблюдения.';
       }
       const make=(tag,attrs={},content)=>{const node=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([key,value])=>node.setAttribute(key,value));if(content!==undefined)node.textContent=content;return node;};
@@ -346,7 +329,6 @@
         const result=calculate(snapshot.values),band=signalBand(result.D),angle=(result.D*3.6).toFixed(1),displayDate=fmt(snapshot.date);
         document.getElementById('deescalation-composite').textContent=format(result.D);
         document.getElementById('deescalation-band').textContent=band[0];
-        document.getElementById('deescalation-status').textContent=band[2];
         document.getElementById('deescalation-date').textContent=`Дата среза: ${displayDate}.`;
         document.getElementById('deescalation-calculation').textContent=`M = ${format(result.M)}; T = ${format(result.T)}; D = ${format(result.D)}.`;
         snapshot.values.forEach((value,index)=>{
@@ -406,7 +388,6 @@
         const result=calculate(snapshot.values),band=riskBand(result.N),angle=(result.N*3.6).toFixed(1),displayDate=fmt(snapshot.date);
         document.getElementById('natural-composite').textContent=format(result.N);
         document.getElementById('natural-band').textContent=band[1];
-        document.getElementById('natural-status').textContent=band[3];
         document.getElementById('natural-date').textContent=`Дата среза: ${displayDate}.`;
         document.getElementById('natural-calculation').textContent=`P = ${format(result.P)}; B_N = ${format(result.B)}; H = ${format(result.H)}; N = ${format(result.N)}.`;
         snapshot.values.forEach((value,index)=>{const componentBand=riskBand(value);document.getElementById(`natural-score-${index}`).textContent=format(value);document.getElementById(`natural-bar-${index}`).className=`bar ${componentBand[0]}`;document.querySelector(`#natural-bar-${index} span`).style.width=`${value}%`;});
