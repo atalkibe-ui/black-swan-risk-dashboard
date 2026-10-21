@@ -19,7 +19,8 @@ cd "$APP_ROOT"
 
 "$PYTHON" "$RESEARCH/build_economic_narrative_stress.py" \
   --cache-dir "$CACHE_ROOT/economic-narrative" \
-  --output "$RESEARCH/economic-narrative-stress.json"
+  --output "$RESEARCH/economic-narrative-stress.json" \
+  --dashboard "$DASHBOARD"
 
 "$PYTHON" "$RESEARCH/build_central_bank_communication_stress.py" \
   --cache-dir "$CACHE_ROOT/central-bank-communications" \
