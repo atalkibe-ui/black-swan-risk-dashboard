@@ -9,9 +9,9 @@
   },
   "summary": {
     "events_warned": 6,
-    "events_total": 8,
-    "event_hit_rate": 0.75,
-    "roc_auc_4w": 0.595,
+    "events_total": 7,
+    "event_hit_rate": 0.857,
+    "roc_auc_4w": 0.633,
     "alert_weeks": 263,
     "false_alert_weeks": 200,
     "false_alert_episodes": 21,
@@ -87,16 +87,6 @@
       "lead_weeks": 12,
       "warning_70": true,
       "score_at_event": 75.4
-    },
-    {
-      "event_date": "2024-08-05",
-      "event": "Глобальный carry unwind и всплеск волатильности",
-      "event_week": "2024-08-04",
-      "pre_event_peak": 57.1,
-      "peak_date": "2024-07-14",
-      "lead_weeks": 3,
-      "warning_70": false,
-      "score_at_event": 57.0
     }
   ]
 }
