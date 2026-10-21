@@ -17,6 +17,11 @@ function integer(value, fallback, min, max) {
   return Number.isFinite(parsed) ? Math.min(max, Math.max(min, parsed)) : fallback;
 }
 
+function enabled(value, fallback = false) {
+  if (value === undefined) return fallback;
+  return !['0', 'false', 'no', 'off'].includes(String(value).toLowerCase());
+}
+
 function json(response, status, body) {
   response.writeHead(status, {
     'Content-Type': 'application/json; charset=utf-8',
@@ -130,20 +135,30 @@ function providerConfiguration() {
     error.status = 503;
     throw error;
   }
-  return { mode, baseUrl, model, apiKey: process.env.OPENAI_API_KEY || '' };
+  return {
+    mode,
+    baseUrl,
+    model,
+    apiKey: process.env.OPENAI_API_KEY || '',
+    webSearch: enabled(process.env.AI_ENABLE_WEB_SEARCH, true),
+  };
 }
 
 function modelRequest(configuration, prompt, context) {
-  const input = `Срез данных дашборда в JSON:\n${JSON.stringify(context, null, 2)}`;
+  const input = `Дата запуска анализа: ${new Date().toISOString().slice(0, 10)}.\nПриложенный пользователем срез данных дашборда в JSON:\n${JSON.stringify(context, null, 2)}`;
   if (configuration.mode === 'chat-completions') {
+    const body = { model: configuration.model, messages: [{ role: 'system', content: prompt }, { role: 'user', content: input }] };
+    if (configuration.webSearch) body.web_search_options = { search_context_size: 'high' };
     return {
       url: `${configuration.baseUrl}/chat/completions`,
-      body: { model: configuration.model, messages: [{ role: 'system', content: prompt }, { role: 'user', content: input }] },
+      body,
     };
   }
+  const body = { model: configuration.model, instructions: prompt, input };
+  if (configuration.webSearch) body.tools = [{ type: 'web_search', search_context_size: 'high' }];
   return {
     url: `${configuration.baseUrl}/responses`,
-    body: { model: configuration.model, instructions: prompt, input },
+    body,
   };
 }
 

@@ -7,7 +7,7 @@
 
 Требуется Node.js 20 или новее.
 
-1. Создайте `server/prompts/analysis-prompt.txt` на основе согласованного промпта.
+1. Согласованный промпт уже находится в `server/prompts/analysis-prompt.txt`.
 2. Задайте серверные переменные окружения:
 
 ```text
@@ -15,13 +15,17 @@ OPENAI_API_KEY=<секретный ключ>
 OPENAI_MODEL=<разрешенная модель>
 OPENAI_BASE_URL=https://api.openai.com/v1
 AI_API_MODE=responses
+AI_ENABLE_WEB_SEARCH=true
 HOST=127.0.0.1
 PORT=8080
 ```
 
 Для внутреннего OpenAI-совместимого шлюза замените `OPENAI_BASE_URL`. Если шлюз
-использует Chat Completions API, задайте `AI_API_MODE=chat-completions`. Токен
-можно не задавать, если аутентификацию выполняет сетевой шлюз организации.
+использует Chat Completions API, задайте `AI_API_MODE=chat-completions`. При
+включенном поиске Responses API получает инструмент `web_search`, а Chat
+Completions API — параметр `web_search_options`. Шлюз и выбранная модель должны
+поддерживать соответствующий режим. Токен можно не задавать, если аутентификацию
+выполняет сетевой шлюз организации.
 
 Дополнительные переменные:
 
@@ -30,6 +34,7 @@ AI_PROMPT_FILE=/secure/path/analysis-prompt.txt
 AI_CACHE_FILE=/var/lib/black-swan/latest-analysis.json
 AI_TIMEOUT_MS=60000
 MAX_REQUEST_BYTES=65536
+AI_ENABLE_WEB_SEARCH=true
 ```
 
 ## Запуск
