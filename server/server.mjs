@@ -1,16 +1,24 @@
 import { createServer } from 'node:http';
-import { readFile, rename, writeFile, mkdir } from 'node:fs/promises';
+import { spawn } from 'node:child_process';
+import { readFile, rename, writeFile, mkdir, stat } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const serverDir = fileURLToPath(new URL('.', import.meta.url));
-const dashboardPath = resolve(serverDir, '../dashboard/black-swan-dashboard.html');
+const appRoot = resolve(serverDir, '..');
+const dashboardPath = resolve(process.env.DASHBOARD_PATH || resolve(appRoot, 'dashboard/black-swan-dashboard.html'));
 const promptPath = resolve(process.env.AI_PROMPT_FILE || resolve(serverDir, 'prompts/analysis-prompt.txt'));
 const cachePath = resolve(process.env.AI_CACHE_FILE || resolve(serverDir, 'data/latest-analysis.json'));
+const refreshEnabled = enabled(process.env.DATA_REFRESH_ENABLED, false);
+const refreshScriptPath = resolve(process.env.DATA_REFRESH_SCRIPT || resolve(appRoot, 'deployment/refresh-data.sh'));
+const refreshRoot = resolve(process.env.DATA_REFRESH_ROOT || appRoot);
+const refreshStatePath = resolve(process.env.DATA_REFRESH_STATE_FILE || resolve(serverDir, 'data/data-refresh.json'));
 const host = process.env.HOST || '127.0.0.1';
 const port = integer(process.env.PORT, 8080, 1, 65535);
 const maxBodyBytes = integer(process.env.MAX_REQUEST_BYTES, 64 * 1024, 1024, 1024 * 1024);
 const timeoutMs = integer(process.env.AI_TIMEOUT_MS, 60_000, 1000, 300_000);
+const refreshTimeoutMs = integer(process.env.DATA_REFRESH_TIMEOUT_MS, 15 * 60_000, 10_000, 60 * 60_000);
+let refreshJob = null;
 
 function integer(value, fallback, min, max) {
   const parsed = Number.parseInt(value ?? '', 10);
@@ -197,11 +205,15 @@ async function requestAnalysis(context) {
 }
 
 async function saveLatest(result) {
-  const directory = resolve(cachePath, '..');
-  const temporaryPath = `${cachePath}.${process.pid}.tmp`;
+  await writeJson(cachePath, result);
+}
+
+async function writeJson(path, value) {
+  const directory = resolve(path, '..');
+  const temporaryPath = `${path}.${process.pid}.tmp`;
   await mkdir(directory, { recursive: true });
-  await writeFile(temporaryPath, JSON.stringify(result), { encoding: 'utf8', mode: 0o600 });
-  await rename(temporaryPath, cachePath);
+  await writeFile(temporaryPath, JSON.stringify(value), { encoding: 'utf8', mode: 0o600 });
+  await rename(temporaryPath, path);
 }
 
 async function getLatest() {
@@ -211,6 +223,101 @@ async function getLatest() {
     if (error.code === 'ENOENT') return null;
     throw error;
   }
+}
+
+async function dataFreshness() {
+  const definitions = [
+    ['economic', resolve(refreshRoot, 'research/economic-index-history.json'), 'records'],
+    ['political', resolve(refreshRoot, 'research/political-index-history.json'), 'snapshots'],
+    ['naturalBiological', resolve(refreshRoot, 'research/natural-biological-history.json'), 'records'],
+  ];
+  const sources = {};
+  for (const [name, path, key] of definitions) {
+    try {
+      const payload = JSON.parse(await readFile(path, 'utf8'));
+      const rows = payload[key];
+      sources[name] = Array.isArray(rows) && rows.length ? String(rows.at(-1).date || '') : '';
+    } catch {
+      sources[name] = '';
+    }
+  }
+  const dates = Object.values(sources).filter((date) => /^\d{4}-\d{2}-\d{2}$/.test(date)).sort();
+  let bloombergModifiedAt = null;
+  try {
+    const workbook = resolve(process.env.BLOOMBERG_WORKBOOK || resolve(refreshRoot, 'research/Blackswan.xlsx'));
+    bloombergModifiedAt = (await stat(workbook)).mtime.toISOString();
+  } catch {}
+  return {
+    latestDataDate: dates.length === definitions.length ? dates[0] : null,
+    sources,
+    bloombergModifiedAt,
+  };
+}
+
+async function getRefreshState() {
+  let saved = { status: 'idle', message: 'Обновление еще не запускалось.' };
+  try {
+    saved = JSON.parse(await readFile(refreshStatePath, 'utf8'));
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
+  if (saved.status === 'running' && !refreshJob) {
+    saved = { ...saved, status: 'failed', finishedAt: new Date().toISOString(), message: 'Обновление было прервано перезапуском сервера.' };
+    await writeJson(refreshStatePath, saved);
+  }
+  return { enabled: refreshEnabled, ...saved, ...(await dataFreshness()) };
+}
+
+async function startDataRefresh() {
+  if (!refreshEnabled) {
+    const error = new Error('Обновление данных не настроено на этом сервере.');
+    error.status = 503;
+    throw error;
+  }
+  if (refreshJob) {
+    const error = new Error('Обновление данных уже выполняется.');
+    error.status = 409;
+    throw error;
+  }
+  await stat(refreshScriptPath);
+  const startedAt = new Date().toISOString();
+  const running = { status: 'running', startedAt, finishedAt: null, message: 'Обновляются открытые источники и данные Bloomberg.' };
+  await writeJson(refreshStatePath, running);
+
+  const child = spawn(refreshScriptPath, [refreshRoot], {
+    cwd: refreshRoot,
+    env: process.env,
+    stdio: ['ignore', 'pipe', 'pipe'],
+  });
+  refreshJob = child;
+  let output = '';
+  const collect = (chunk) => {
+    output = `${output}${chunk}`.slice(-24_000);
+  };
+  child.stdout.on('data', collect);
+  child.stderr.on('data', collect);
+  const timer = setTimeout(() => child.kill('SIGTERM'), refreshTimeoutMs);
+  timer.unref();
+
+  child.on('error', async (error) => {
+    clearTimeout(timer);
+    refreshJob = null;
+    console.error('Data refresh could not start:', error);
+    await writeJson(refreshStatePath, { ...running, status: 'failed', finishedAt: new Date().toISOString(), message: 'Не удалось запустить обновление данных.' }).catch(console.error);
+  });
+  child.on('close', async (code, signal) => {
+    clearTimeout(timer);
+    refreshJob = null;
+    const succeeded = code === 0;
+    if (!succeeded) console.error(`Data refresh failed (code=${code}, signal=${signal || 'none'}):\n${output}`);
+    await writeJson(refreshStatePath, {
+      ...running,
+      status: succeeded ? 'succeeded' : 'failed',
+      finishedAt: new Date().toISOString(),
+      message: succeeded ? 'Данные успешно обновлены.' : 'Обновление завершилось с ошибкой. Подробности находятся в журнале сервера.',
+    }).catch(console.error);
+  });
+  return { enabled: true, ...running, ...(await dataFreshness()) };
 }
 
 async function readiness() {
@@ -251,6 +358,15 @@ async function handle(request, response) {
     const result = await requestAnalysis(context);
     await saveLatest(result);
     return json(response, 200, result);
+  }
+  if (request.method === 'GET' && url.pathname === '/api/data-refresh') {
+    return json(response, 200, await getRefreshState());
+  }
+  if (request.method === 'POST' && url.pathname === '/api/data-refresh') {
+    if (request.headers['x-requested-with'] !== 'black-swan-dashboard') {
+      return json(response, 403, { error: 'Запрос на обновление не прошел проверку источника.' });
+    }
+    return json(response, 202, await startDataRefresh());
   }
   if (request.method === 'GET' && ['/', '/index.html'].includes(url.pathname)) {
     const html = await readFile(dashboardPath);

@@ -29,6 +29,8 @@ required = (
     "DEESCALATION_DATA_START",
     "NATURAL_BIOLOGICAL_DATA_START",
     "Аналитический комментарий",
+    "api/data-refresh",
+    "data-refresh-label",
 )
 missing = [marker for marker in required if marker not in html]
 if missing:

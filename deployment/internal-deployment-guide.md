@@ -10,8 +10,8 @@
 
 | Слой | Технология | Назначение |
 |---|---|---|
-| Интерфейс | HTML5, CSS, JavaScript, SVG | Три индекса, исторические срезы и AI-комментарий |
-| Веб/API | Node.js 20+ без внешних npm-зависимостей | Статика, `/api/ai-analysis`, валидация и кэш |
+| Интерфейс | HTML5, CSS, JavaScript, SVG | Три индекса, исторические срезы, обновление и AI-комментарий |
+| Веб/API | Node.js 20+ без внешних npm-зависимостей | Статика, `/api/ai-analysis`, `/api/data-refresh`, валидация и кэш |
 | Reverse proxy | Nginx 1.24+ или корпоративный аналог | TLS, SSO, ACL, лимиты и журнал доступа |
 | Расчеты | Python 3.11+ | Обновление индексов и бэк-тестов |
 | Python-пакеты | NumPy, pandas, scikit-learn, openpyxl | Excel, нормирование и метрики |
@@ -35,9 +35,13 @@
         v
 Node.js dashboard service
    |                 |
-   | read-only       | HTTPS, только сервер-сервер
+   |                 | HTTPS, только сервер-сервер
    v                 v
 HTML + JSON       Внутренний AI gateway
+   ^
+   | контролируемый расчет по кнопке оператора
+   |
+Python ETL --> открытые источники + Bloomberg XLSX / РЭОК
                      |
                      +--> утвержденная LLM
                      +--> утвержденный веб-поиск
@@ -49,9 +53,12 @@ HTML + JSON       Внутренний AI gateway
    +--> staging release -> проверка -> атомарная публикация
 ```
 
-Интерактивный сервис и расчетный процесс следует разделять. Расчеты выполняются
-в staging-копии, после проверки создается новый неизменяемый релиз. Продуктивный
-процесс не должен изменять формулы или данные во время пользовательского запроса.
+В комплекте реализован односерверный режим: кнопка отправляет асинхронный запрос,
+Node.js запускает фиксированный `refresh-data.sh`, а браузер опрашивает статус и
+перезагружает готовую страницу. POST-доступ следует дать только группе операторов
+данных. В критичном production-контуре вместо прямого запуска укажите в
+`DATA_REFRESH_SCRIPT` утвержденный job broker, который считает staging-копию и
+публикует ее после контроля.
 
 ## 4. Рекомендуемые ресурсы
 
@@ -102,6 +109,7 @@ service. При `AI_ENABLE_WEB_SEARCH=false` кнопка технически �
 | Пользователи -> reverse proxy | 443/TCP | Интерфейс и API |
 | Reverse proxy -> Node.js | 8080/TCP localhost | Внутренний upstream |
 | Node.js -> AI gateway | 443/TCP | Генерация комментария |
+| Node.js/Python -> открытые источники | 443/TCP | Обновление индексов по кнопке |
 | Мониторинг -> `/health`, `/ready` | 443/TCP | Liveness/readiness |
 
 ### Расчетный узел при обновлении из интернета
@@ -165,8 +173,10 @@ sudo install -d -o root -g root -m 0755 /opt/black-swan-dashboard/releases
 sudo install -d -o root -g black-swan -m 0750 /var/lib/black-swan-dashboard
 sudo install -d -o black-swan -g black-swan -m 0700 \
   /var/lib/black-swan-dashboard/runtime
-sudo install -d -o data-operator -g black-swan -m 0750 \
+sudo install -d -o black-swan -g black-swan -m 0750 \
   /var/lib/black-swan-dashboard/source-cache
+sudo install -d -o data-operator -g black-swan -m 0750 \
+  /var/lib/black-swan-dashboard/input
 sudo install -d -o root -g black-swan -m 0750 /etc/black-swan-dashboard
 ```
 
@@ -185,13 +195,25 @@ sudo chown -R root:root "/opt/black-swan-dashboard/releases/$RELEASE"
 sudo find "/opt/black-swan-dashboard/releases/$RELEASE" -type d -exec chmod 0755 {} \;
 sudo find "/opt/black-swan-dashboard/releases/$RELEASE" -type f -exec chmod 0644 {} \;
 sudo chmod 0755 "/opt/black-swan-dashboard/releases/$RELEASE/deployment/"*.sh
+sudo chgrp black-swan \
+  "/opt/black-swan-dashboard/releases/$RELEASE/dashboard/black-swan-dashboard.html" \
+  "/opt/black-swan-dashboard/releases/$RELEASE/research/"*.json \
+  "/opt/black-swan-dashboard/releases/$RELEASE/research/"*.md
+sudo chmod 0664 \
+  "/opt/black-swan-dashboard/releases/$RELEASE/dashboard/black-swan-dashboard.html" \
+  "/opt/black-swan-dashboard/releases/$RELEASE/research/"*.json \
+  "/opt/black-swan-dashboard/releases/$RELEASE/research/"*.md
 sudo ln -sfn "/opt/black-swan-dashboard/releases/$RELEASE" \
   /opt/black-swan-dashboard/current
 ```
 
+Перед запуском загрузите проверенные файлы `Blackswan.xlsx` и `REOK.xlsx` в
+`/var/lib/black-swan-dashboard/input/`, назначьте владельца
+`data-operator:black-swan` и права `0640`.
+
 ### 8.3. Python-окружение для расчетного узла
 
-На интерактивном сервере Python не обязателен. На расчетном узле:
+При обновлении по кнопке Python устанавливается на том же сервере:
 
 ```bash
 sudo python3 -m venv /opt/black-swan-dashboard/venv
@@ -219,6 +241,10 @@ sudoedit /etc/black-swan-dashboard/black-swan.env
 - `OPENAI_API_KEY` — токен, если его требует шлюз;
 - `AI_API_MODE` — `responses` либо `chat-completions`;
 - `AI_ENABLE_WEB_SEARCH` — `true`, если шлюз поддерживает поиск.
+- `DATA_REFRESH_ENABLED=true` — включает серверное обновление по кнопке;
+- `DATA_REFRESH_SCRIPT` и `DATA_REFRESH_ROOT` — фиксированный сценарий и корень поставки;
+- `BLOOMBERG_WORKBOOK` и `REOK_WORKBOOK` — серверные пути к проверенным XLSX;
+- `PYTHON` и `CACHE_ROOT` — Python-окружение и рабочий кэш источников.
 
 Не передавайте ключ через `Environment=` в публичном unit-файле. Предпочтительно
 получать его из Vault при запуске; EnvironmentFile является запасным вариантом.
@@ -244,7 +270,7 @@ curl -fsS http://127.0.0.1:8080/ready
 2. Выпустите сертификат корпоративного УЦ.
 3. Скорректируйте `server_name` и пути сертификатов в Nginx-конфигурации.
 4. Подключите утвержденный SSO/OIDC/Kerberos-модуль на reverse proxy.
-5. Ограничьте доступ группой аналитиков и руководителей.
+5. Ограничьте просмотр группой аналитиков и руководителей, а `POST /api/data-refresh` отдельной ролью оператора данных.
 6. До подключения SSO не публикуйте сервис за пределы административной подсети.
 
 ```bash
@@ -272,29 +298,33 @@ curl -fsS -o /dev/null -w '%{http_code}\n' \
 3. Композит пересчитывается при движении ползунка.
 4. Кнопка AI возвращает только нумерованный список.
 5. После перезагрузки показывается сохраненный ответ.
-6. Неавторизованный пользователь получает отказ на reverse proxy.
-7. В HTML и DevTools отсутствуют API-токен и системный промпт.
+6. Кнопка в шапке обновляет открытые источники, использует серверный Bloomberg XLSX и после завершения показывает новый срез.
+7. Пользователь без роли оператора не может выполнить `POST /api/data-refresh`.
+8. Неавторизованный пользователь получает отказ на reverse proxy.
+9. В HTML и DevTools отсутствуют API-токен, XLSX и системный промпт.
 
 ## 10. Обновление данных
 
-Расчет выполняется не в `current`, а в новой staging-копии:
+Кнопка в шапке вызывает `POST /api/data-refresh`. Сервер немедленно возвращает
+HTTP 202, выполняет один расчетный процесс и публикует состояние через
+`GET /api/data-refresh`. Повторный POST во время расчета возвращает HTTP 409.
+
+В односерверном режиме установленный сценарий запускается так:
 
 ```bash
-RELEASE="$(date -u +%Y%m%d-%H%M%S)"
-STAGE="/opt/black-swan-dashboard/releases/$RELEASE"
-sudo install -d -o root -g root -m 0755 "$STAGE"
-sudo cp -aL /opt/black-swan-dashboard/current/. "$STAGE/"
-sudo chown -R data-operator:black-swan "$STAGE"
-```
-
-Затем в `research/` заменяются утвержденные Bloomberg `Blackswan.xlsx` и РЭОК
-`REOK.xlsx`, после чего запускается:
-
-```bash
-sudo -u data-operator \
+sudo -u black-swan \
   PYTHON=/opt/black-swan-dashboard/venv/bin/python \
   CACHE_ROOT=/var/lib/black-swan-dashboard/source-cache \
-  "$STAGE/deployment/refresh-data.sh" "$STAGE"
+  BLOOMBERG_WORKBOOK=/var/lib/black-swan-dashboard/input/Blackswan.xlsx \
+  REOK_WORKBOOK=/var/lib/black-swan-dashboard/input/REOK.xlsx \
+  /opt/black-swan-dashboard/current/deployment/refresh-data.sh \
+  /opt/black-swan-dashboard/current
+```
+
+Перед приемкой кнопки проверьте статус напрямую:
+
+```bash
+curl -fsS http://127.0.0.1:8080/api/data-refresh
 ```
 
 Порядок расчета зафиксирован в скрипте:
@@ -307,14 +337,10 @@ sudo -u data-operator \
 6. природно-биологический индекс и его бэк-тест;
 7. валидация релиза.
 
-После аналитического контроля владельцем методологии:
-
-```bash
-sudo chown -R root:root "$STAGE"
-sudo ln -sfn "$STAGE" /opt/black-swan-dashboard/current
-sudo systemctl restart black-swan-dashboard
-curl -fsS http://127.0.0.1:8080/ready
-```
+Для production с обязательным четырехглазным контролем замените
+`DATA_REFRESH_SCRIPT` на утвержденный исполняемый broker без пользовательских
+аргументов. Он должен создать staging-релиз, выполнить те же расчеты и проверки,
+атомарно опубликовать результат; Node.js не принимает путь или команду из HTTP.
 
 Рекомендуемая частота — еженедельно после закрытия недели. Месячные показатели
 переносятся вперед внутри месяца по текущей методологии публикационных лагов.
@@ -353,6 +379,7 @@ curl -fsS http://127.0.0.1:8080/ready
 - `/health`: каждые 30 секунд, тревога после трех ошибок;
 - `/ready`: каждую минуту;
 - время и код ответа `POST /api/ai-analysis`;
+- статус и длительность `POST /api/data-refresh`, возраст `latestDataDate`;
 - свободное место `/var/lib/black-swan-dashboard`;
 - возраст последнего принятого релиза;
 - срок действия TLS-сертификата;
@@ -374,8 +401,9 @@ journalctl -u black-swan-dashboard --since today
 - Токен находится в Vault либо файле `0640`, никогда в Git/HTML.
 - Исходящий доступ ограничен AI gateway и утвержденными источниками.
 - Reverse proxy ограничивает размер запроса и частоту AI-вызовов.
-- Релиз принадлежит `root` и доступен сервису только на чтение.
-- Состояние сервиса записывается только в `/var/lib/black-swan-dashboard`.
+- Формулы и исполняемый код релиза принадлежат `root`; сервис может изменять только расчетные JSON/MD и HTML.
+- Входные XLSX хранятся вне Git в `/var/lib/black-swan-dashboard/input` и доступны сервису только на чтение.
+- POST обновления разрешен только роли оператора данных и запускает фиксированный серверный сценарий.
 - Обновления Node.js, Python и библиотек проходят внутренний vulnerability scan.
 - XLSX и JSON перед публикацией проходят антивирусную и содержательную проверку.
 - AI-ответ является аналитическим материалом, а не автоматическим решением.
@@ -397,6 +425,9 @@ journalctl -u black-swan-dashboard --since today
 6. Текущий AI-кэш хранит только последний ответ и не является полноценным
    аудиторским журналом. Для аудита нужны request ID, дата среза, версия промпта,
    модель, хэш входных данных и защищенное хранение результата.
+7. Базовый односерверный режим обновляет расчетные файлы текущего релиза. Если
+   политика банка требует неизменяемые релизы и предварительное утверждение,
+   подключите staging/job broker через `DATA_REFRESH_SCRIPT`.
 
 ## 16. Критерии готовности к production
 
@@ -406,6 +437,6 @@ journalctl -u black-swan-dashboard --since today
 - Секрет выдается через утвержденное хранилище.
 - Проверены `health`, `ready`, лимиты и тайм-ауты.
 - Выполнена приемка формул и контрольных дат владельцем методологии.
-- Настроен еженедельный staging-процесс и четырехглазный контроль публикации.
+- Настроено обновление по кнопке либо staging-процесс с четырехглазным контролем публикации.
 - Проведены тест восстановления и отката.
 - Назначены владельцы приложения, данных, модели и инфраструктуры.

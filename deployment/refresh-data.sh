@@ -6,6 +6,11 @@ PYTHON="${PYTHON:-$APP_ROOT/.venv/bin/python}"
 CACHE_ROOT="${CACHE_ROOT:-/var/lib/black-swan-dashboard/source-cache}"
 DASHBOARD="$APP_ROOT/dashboard/black-swan-dashboard.html"
 RESEARCH="$APP_ROOT/research"
+BLOOMBERG_WORKBOOK="${BLOOMBERG_WORKBOOK:-$RESEARCH/Blackswan.xlsx}"
+REOK_WORKBOOK="${REOK_WORKBOOK:-$RESEARCH/REOK.xlsx}"
+
+test -r "$BLOOMBERG_WORKBOOK"
+test -r "$REOK_WORKBOOK"
 
 mkdir -p "$CACHE_ROOT"
 cd "$APP_ROOT"
@@ -19,8 +24,8 @@ cd "$APP_ROOT"
   --output "$RESEARCH/central-bank-communication-stress.json"
 
 "$PYTHON" "$RESEARCH/build_economic_history.py" \
-  --workbook "$RESEARCH/Blackswan.xlsx" \
-  --reok "$RESEARCH/REOK.xlsx" \
+  --workbook "$BLOOMBERG_WORKBOOK" \
+  --reok "$REOK_WORKBOOK" \
   --output "$RESEARCH/economic-index-history.json" \
   --backtest "$RESEARCH/economic-index-backtest.json" \
   --report "$RESEARCH/economic-index-backtest.md" \

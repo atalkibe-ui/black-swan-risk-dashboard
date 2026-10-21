@@ -22,7 +22,12 @@
     .muted { color:var(--muted); }
     .small { font-size:12px; }
     .meta { display:flex; flex-wrap:wrap; gap:8px; }
-    .tag { padding:4px 8px; border:1px solid var(--line); border-radius:999px; color:var(--muted); font-size:12px; }
+    .data-refresh { min-height:36px; display:inline-flex; align-items:center; gap:8px; border:1px solid #245b82; border-radius:5px; padding:8px 11px; color:#fff; background:var(--blue); font:700 12px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif; cursor:pointer; }
+    .data-refresh:hover { background:#245b82; }
+    .data-refresh:focus-visible { outline:3px solid rgba(47,111,159,.28); outline-offset:2px; }
+    .data-refresh:disabled { cursor:wait; opacity:.7; }
+    .data-refresh-icon { font-size:17px; line-height:1; }
+    .data-refresh.is-loading .data-refresh-icon { animation:ai-spin .9s linear infinite; }
     .grid { display:grid; gap:14px; }
     .overview { grid-template-columns:minmax(320px,.8fr) minmax(500px,1.7fr); }
     .panel { background:var(--panel); border:1px solid var(--line); border-radius:7px; padding:17px; min-width:0; }
@@ -149,9 +154,10 @@
   <header>
     <h1>Kazakhstan Black Swan Risk Dashboard</h1>
     <div class="meta">
-      <span class="tag">Последние данные по модулям: 18.10.2026</span>
-      <span class="tag">Недельная частота</span>
-      <span class="tag">Макрориски банка развития</span>
+      <button class="data-refresh" id="data-refresh" type="button" title="Обновить открытые источники и пересчитать индексы с файлом Bloomberg">
+        <span class="data-refresh-icon" aria-hidden="true">&#8635;</span>
+        <span id="data-refresh-label">Последние данные по модулям: 18.10.2026</span>
+      </button>
     </div>
   </header>
   <main>
@@ -451,6 +457,60 @@
       slider.addEventListener('input',render);new ResizeObserver(render).observe(svg);render();
     })();
     (() => {
+      const button=document.getElementById('data-refresh');
+      const label=document.getElementById('data-refresh-label');
+      const formatDate=value=>{
+        if(!/^\d{4}-\d{2}-\d{2}$/.test(value||''))return null;
+        const [year,month,day]=value.split('-');
+        return `${day}.${month}.${year}`;
+      };
+      const request=async options=>{
+        const response=await fetch('./api/data-refresh',options);
+        const contentType=response.headers.get('content-type')||'';
+        const data=contentType.includes('application/json')?await response.json():null;
+        if(!response.ok)throw new Error(data?.error||'Сервис обновления данных недоступен.');
+        return data;
+      };
+      const render=state=>{
+        const date=formatDate(state.latestDataDate);
+        button.classList.toggle('is-loading',state.status==='running');
+        button.disabled=state.status==='running';
+        if(state.status==='running')label.textContent='Обновление данных...';
+        else label.textContent=date?`Последние данные по модулям: ${date}`:'Последние данные по модулям: дата не определена';
+        button.title=state.message||'Обновить открытые источники и пересчитать индексы с файлом Bloomberg';
+      };
+      const waitForCompletion=async()=>{
+        while(true){
+          await new Promise(resolve=>setTimeout(resolve,2000));
+          const state=await request({headers:{Accept:'application/json'}});
+          render(state);
+          if(state.status==='succeeded'){
+            window.location.reload();
+            return;
+          }
+          if(state.status==='failed')throw new Error(state.message);
+        }
+      };
+      button.addEventListener('click',async()=>{
+        button.disabled=true;button.classList.add('is-loading');label.textContent='Запуск обновления...';
+        try{
+          const state=await request({method:'POST',headers:{Accept:'application/json','X-Requested-With':'black-swan-dashboard'}});
+          render(state);
+          await waitForCompletion();
+        }catch(error){
+          button.disabled=false;button.classList.remove('is-loading');
+          button.title=error.message||'Не удалось обновить данные.';
+          label.textContent='Ошибка обновления. Повторить';
+        }
+      });
+      request({headers:{Accept:'application/json'}}).then(state=>{
+        render(state);
+        if(state.status==='running')waitForCompletion().catch(error=>{
+          button.disabled=false;button.classList.remove('is-loading');button.title=error.message;label.textContent='Ошибка обновления. Повторить';
+        });
+      }).catch(()=>{});
+    })();
+    (() => {
       const button=document.getElementById('ai-analysis-refresh');
       const answer=document.getElementById('ai-analysis-answer');
       const status=document.getElementById('ai-analysis-status');
@@ -463,7 +523,7 @@
       const grids=[...document.querySelectorAll('.indicator-grid.five')];
       const components=(gridIndex,valueId)=>[...grids[gridIndex].querySelectorAll('.indicator-card')].map((card,index)=>({name:card.querySelector('h3')?.textContent?.trim()||'',value:parseNumber(text(`${valueId}-${index}`))}));
       const dashboardContext=()=>({
-        dashboardUpdated:document.querySelector('header .tag')?.textContent?.trim()||'',
+        dashboardUpdated:text('data-refresh-label'),
         indices:[
           {name:text('economic-heading'),date:text('snapshot-date'),composite:parseNumber(text('composite')),band:text('band'),redThreshold:80,components:components(0,'score')},
           {name:text('deescalation-heading'),date:text('deescalation-date'),composite:parseNumber(text('deescalation-composite')),band:text('deescalation-band'),redThreshold:75,components:components(1,'political-score')},

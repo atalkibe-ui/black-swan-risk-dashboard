@@ -28,7 +28,10 @@ ProtectControlGroups=true
 RestrictSUIDSGID=true
 RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
 ReadOnlyPaths=/opt/black-swan-dashboard
+ReadWritePaths=/opt/black-swan-dashboard/current/dashboard
+ReadWritePaths=/opt/black-swan-dashboard/current/research
 ReadWritePaths=/var/lib/black-swan-dashboard/runtime
+ReadWritePaths=/var/lib/black-swan-dashboard/source-cache
 LimitNOFILE=4096
 
 [Install]
