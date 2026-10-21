@@ -129,7 +129,7 @@ def rolling_mean(values: list[float], window: int = 4) -> list[float]:
 
 def composite(values: list[float]) -> float:
     baseline = sum(value * weight for value, weight in zip(values, WEIGHTS))
-    return min(99.0, max(1.0, 0.65 * baseline + 0.35 * max(values)))
+    return min(99.0, max(1.0, 0.70 * baseline + 0.30 * max(values)))
 
 
 def build(russia_path: Path, cache_dir: Path, workers: int) -> dict:
@@ -201,7 +201,7 @@ def build(russia_path: Path, cache_dir: Path, workers: int) -> dict:
                 "52-week score using prior observations only; sparse volume is attenuated toward "
                 "20 and the first 26 weeks are neutral 50."
             ),
-            "formula": "B=.30R+.20H+.25T+.15G+.10K; P=.65B+.35max(R,H,T,G,K)",
+            "formula": "B=.30R+.20H+.25T+.15G+.10K; P=.70B+.30max(R,H,T,G,K)",
         },
     }
 
