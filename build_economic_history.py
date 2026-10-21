@@ -130,8 +130,8 @@ def load_narrative(weeks: pd.DatetimeIndex) -> pd.Series:
             for item in bank_payload["records"]
         }
     ).sort_index()
-    news_weekly = asof_weekly(news, weeks)
-    bank_weekly = asof_weekly(bank, weeks)
+    news_weekly = asof_weekly(news, weeks).fillna(50.0)
+    bank_weekly = asof_weekly(bank, weeks).fillna(50.0)
     combined = 0.70 * news_weekly + 0.30 * bank_weekly
     first_observed = min(news.index.min(), bank.index.min())
     combined.loc[combined.index < first_observed] = 50.0
@@ -246,6 +246,7 @@ def build_history(workbook: Path, reok_workbook: Path) -> tuple[pd.DataFrame, di
         "reserves_unit": "USD billions, National Fund excluded",
         "kase_volume_security": "USDKZT KAZ2 Curncy",
         "narrative_before_observed_history": 50,
+        "narrative_history": "GDELT 2.1 GKG archive proxy from 2015-03; Google News RSS from 2024-07",
         "formula": "BE=.27F+.25T+.18X+.15D+.15N; E=.50H1+.30H2+.20BE",
     }
     return history, metadata
@@ -333,7 +334,13 @@ def history_payload(history: pd.DataFrame, metadata: dict) -> dict:
                 "h1": round(float(row["H1"]), 1),
                 "h2": round(float(row["H2"]), 1),
                 "composite": round(float(row["composite"]), 1),
-                "source": "factual" if date >= pd.Timestamp("2024-01-01") else "factual-neutral-narrative",
+                "source": (
+                    "factual"
+                    if date >= pd.Timestamp("2024-07-01")
+                    else "factual-gdelt-proxy-narrative"
+                    if date >= pd.Timestamp("2015-03-01")
+                    else "factual-neutral-narrative"
+                ),
             }
         )
     return {"method": metadata, "records": records}
@@ -370,7 +377,7 @@ def markdown_report(backtest_result: dict, metadata: dict) -> str:
             "",
             "## Ограничения",
             "",
-            "- Нарративный компонент до начала текстовой истории равен нейтральным 50.",
+            "- Нарративный компонент использует выборочный архивный GDELT GKG-прокси с марта 2015 года и Google News RSS с июля 2024 года; до GDELT-истории он равен нейтральным 50.",
             "- Бэк-тест проверяет режим рыночного и макроэкономического стресса, а не причинность события.",
             "- Порог не оптимизировался отдельно под перечисленные события.",
             "- USD/KZT implied volatility не используется: выгрузка заканчивается в мае 2014 года.",

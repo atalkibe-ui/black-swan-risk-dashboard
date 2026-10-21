@@ -8,9 +8,11 @@ DASHBOARD="$APP_ROOT/dashboard/black-swan-dashboard.html"
 RESEARCH="$APP_ROOT/research"
 BLOOMBERG_WORKBOOK="${BLOOMBERG_WORKBOOK:-$RESEARCH/Blackswan.xlsx}"
 REOK_WORKBOOK="${REOK_WORKBOOK:-$RESEARCH/REOK.xlsx}"
+GDELT_HISTORY="${GDELT_HISTORY:-$RESEARCH/gdelt-economic-narrative-history.json}"
 
 test -r "$BLOOMBERG_WORKBOOK"
 test -r "$REOK_WORKBOOK"
+test -r "$GDELT_HISTORY"
 
 mkdir -p "$CACHE_ROOT"
 cd "$APP_ROOT"

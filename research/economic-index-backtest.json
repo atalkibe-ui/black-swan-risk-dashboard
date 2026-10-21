@@ -11,8 +11,8 @@
     "events_warned": 6,
     "events_total": 7,
     "event_hit_rate": 0.857,
-    "roc_auc_4w": 0.633,
-    "alert_weeks": 263,
+    "roc_auc_4w": 0.636,
+    "alert_weeks": 264,
     "false_alert_weeks": 200,
     "false_alert_episodes": 21,
     "weeks_tested": 1033
@@ -62,11 +62,11 @@
       "event_date": "2020-03-11",
       "event": "Объявление пандемии COVID-19",
       "event_week": "2020-03-08",
-      "pre_event_peak": 70.5,
+      "pre_event_peak": 70.7,
       "peak_date": "2020-03-01",
       "lead_weeks": 1,
       "warning_70": true,
-      "score_at_event": 72.2
+      "score_at_event": 72.7
     },
     {
       "event_date": "2022-02-24",
@@ -76,17 +76,17 @@
       "peak_date": "2021-12-05",
       "lead_weeks": 11,
       "warning_70": true,
-      "score_at_event": 70.9
+      "score_at_event": 71.3
     },
     {
       "event_date": "2023-03-10",
       "event": "Крах Silicon Valley Bank",
       "event_week": "2023-03-05",
-      "pre_event_peak": 80.6,
+      "pre_event_peak": 80.3,
       "peak_date": "2022-12-11",
       "lead_weeks": 12,
       "warning_70": true,
-      "score_at_event": 75.4
+      "score_at_event": 75.1
     }
   ]
 }

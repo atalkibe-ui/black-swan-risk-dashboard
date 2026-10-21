@@ -117,6 +117,7 @@ service. При `AI_ENABLE_WEB_SEARCH=false` кнопка технически �
 Разрешаются только необходимые FQDN по 443/TCP:
 
 - `query1.finance.yahoo.com`;
+- `data.gdeltproject.org`;
 - `news.google.com`;
 - `www.federalreserve.gov`;
 - `www.ecb.europa.eu`;
@@ -141,6 +142,7 @@ black-swan-risk-dashboard/
 │   ├── REOK.xlsx
 │   ├── requirements.txt
 │   ├── build_*.py
+│   ├── gdelt-economic-narrative-history.json
 │   ├── *-history.json
 │   └── *-backtest.*
 └── deployment/
@@ -329,7 +331,7 @@ curl -fsS http://127.0.0.1:8080/api/data-refresh
 
 Порядок расчета зафиксирован в скрипте:
 
-1. экономические новостные нарративы;
+1. экономические новостные нарративы: архивный GDELT-прокси до июля 2024 года и Google News RSS после;
 2. коммуникации ФРС и ЕЦБ;
 3. экономический индекс и его бэк-тест;
 4. рыночный модуль Россия–Украина;

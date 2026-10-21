@@ -13,6 +13,7 @@ from pathlib import Path
 
 root = Path.cwd()
 checks = {
+    "gdelt-economic-narrative-history.json": "records",
     "economic-index-history.json": "records",
     "political-index-history.json": "snapshots",
     "natural-biological-history.json": "records",

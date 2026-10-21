@@ -11,6 +11,11 @@
 - `research/` — Excel-источники, расчетные скрипты, история и бэк-тесты.
 - `deployment/` — Nginx, systemd, переменные окружения и эксплуатационные скрипты.
 
+История экономических кризисных нарративов использует выборочный архив GDELT 2.1
+GKG с марта 2015 по июнь 2024 года и Google News RSS с июля 2024 года. Архивный
+набор уже включен в `research/`; его воспроизводимая сборка находится в
+`research/build_gdelt_economic_narrative_history.py`.
+
 Полная инструкция: [`deployment/internal-deployment-guide.md`](deployment/internal-deployment-guide.md).
 
 Быстрая локальная проверка:

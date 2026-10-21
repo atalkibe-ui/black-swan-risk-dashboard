@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Build a weekly economic narrative stress indicator from public news.
 
-The pilot uses dated Google News RSS search results because they require no API
-key and are already used by this project. Scores are causal: each week is
+The historical segment uses the sampled GDELT 2.1 GKG archive proxy; the current
+segment uses dated Google News RSS results. Scores are causal: each week is
 normalized only against observations that were available before that week.
 """
 
@@ -43,6 +43,7 @@ CRISIS_PATTERN = re.compile(
 )
 DATA_START = "/* ECONOMIC_NARRATIVE_DATA_START */"
 DATA_END = "/* ECONOMIC_NARRATIVE_DATA_END */"
+DEFAULT_GDELT_HISTORY = Path("research/gdelt-economic-narrative-history.json")
 
 STOPWORDS = {
     "a", "an", "and", "are", "as", "at", "be", "by", "for", "from", "has", "in", "is",
@@ -196,6 +197,66 @@ def score(records: list[dict[str, object]]) -> None:
         record["score"] = round(0.75 * level + 0.25 * change, 1)
 
 
+def median_absolute_deviation(values: list[float]) -> float:
+    center = statistics.median(values)
+    return statistics.median(abs(value - center) for value in values)
+
+
+def hybrid_records(
+    google_records: list[dict[str, object]],
+    gdelt_path: Path,
+    cutover: date,
+) -> tuple[list[dict[str, object]], dict[str, object]]:
+    if not gdelt_path.exists():
+        records = [dict(record, source="Google News RSS") for record in google_records]
+        return records, {"mode": "Google News RSS only", "gdelt_history_found": False}
+
+    payload = json.loads(gdelt_path.read_text(encoding="utf-8"))
+    gdelt_records = payload.get("records", [])
+    gdelt_by_week = {record["week_end"]: record for record in gdelt_records}
+    google_by_week = {record["week_end"]: record for record in google_records}
+    overlap_weeks = sorted(
+        week for week in gdelt_by_week.keys() & google_by_week.keys()
+        if parse_date(week) <= cutover
+    )
+    if len(overlap_weeks) < 13:
+        raise RuntimeError("At least 13 overlap weeks are required to calibrate GDELT and Google News.")
+
+    gdelt_log = [math.log1p(float(gdelt_by_week[week]["intensity"])) for week in overlap_weeks]
+    google_log = [math.log1p(float(google_by_week[week]["intensity"])) for week in overlap_weeks]
+    gdelt_center = statistics.median(gdelt_log)
+    google_center = statistics.median(google_log)
+    gdelt_mad = median_absolute_deviation(gdelt_log)
+    google_mad = median_absolute_deviation(google_log)
+    scale = gdelt_mad / google_mad if google_mad > 1e-9 else 1.0
+    scale = min(4.0, max(0.25, scale))
+
+    historical = [dict(record) for record in gdelt_records if parse_date(record["week_end"]) <= cutover]
+    current = []
+    for record in google_records:
+        if parse_date(record["week_end"]) <= cutover:
+            continue
+        native_intensity = float(record["intensity"])
+        mapped_log = gdelt_center + (math.log1p(native_intensity) - google_center) * scale
+        mapped = max(0.0, math.expm1(mapped_log))
+        current.append({
+            **record,
+            "native_intensity": round(native_intensity, 4),
+            "intensity": round(mapped, 4),
+            "source": "Google News RSS, calibrated to GDELT overlap",
+        })
+    combined = sorted(historical + current, key=lambda record: record["week_end"])
+    return combined, {
+        "mode": "GDELT archive before cutover; Google News RSS after cutover",
+        "gdelt_history_found": True,
+        "cutover_week_end": cutover.isoformat(),
+        "overlap_weeks": len(overlap_weeks),
+        "calibration": "robust log-intensity location/scale mapping using overlap medians and MAD",
+        "google_log_scale": round(scale, 6),
+        "gdelt_method": payload.get("method", {}),
+    }
+
+
 def update_dashboard(path: Path, records: list[dict[str, object]]) -> None:
     source = path.read_text(encoding="utf-8")
     start = source.find(DATA_START)
@@ -221,6 +282,8 @@ def main() -> None:
     parser.add_argument("--cache-dir", type=Path, default=Path(".cache/economic-narrative"))
     parser.add_argument("--output", type=Path, default=Path("research/economic-narrative-stress.json"))
     parser.add_argument("--dashboard", type=Path)
+    parser.add_argument("--gdelt-history", type=Path, default=DEFAULT_GDELT_HISTORY)
+    parser.add_argument("--gdelt-cutover", type=parse_date, default=date(2024, 6, 30))
     args = parser.parse_args()
 
     weeks = sundays(args.start, args.end)
@@ -231,17 +294,19 @@ def main() -> None:
             records[futures[future]] = future.result()
             if completed % 25 == 0 or completed == len(weeks):
                 print(f"Google News: {completed}/{len(weeks)} weeks", flush=True)
-    completed_records = [record for record in records if record is not None]
+    google_records = [record for record in records if record is not None]
+    completed_records, hybrid_method = hybrid_records(google_records, args.gdelt_history, args.gdelt_cutover)
     score(completed_records)
 
     output = {
         "method": {
-            "source": "Google News RSS",
+            "source": "GDELT 2.1 GKG archive and Google News RSS",
             "frequency": "weekly",
             "economies": ["United States", "China", "euro area", "Japan", "United Kingdom", "India", "Russia"],
             "formula": "N = 0.75 * causal percentile(intensity) + 0.25 * causal percentile(4-week acceleration)",
             "intensity": "100 * sqrt(crisis article share * crisis source share)",
-            "note": "Google News RSS is capped and ranking-based; use GDELT volume timelines when available for production.",
+            "hybrid": hybrid_method,
+            "note": "GDELT history is a systematic GKG archive proxy; Google News RSS is capped and ranking-based.",
         },
         "records": completed_records,
     }
