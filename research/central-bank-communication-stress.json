@@ -1,0 +1,1761 @@
+{
+  "method": {
+    "sources": [
+      "Federal Reserve official speeches and testimony",
+      "ECB monetary policy statements"
+    ],
+    "window_days": 84,
+    "half_life_days": 28,
+    "formula": "CB = 0.70 * causal percentile(level) + 0.30 * causal percentile(4-week acceleration)"
+  },
+  "documents": [
+    {
+      "institution": "ECB President",
+      "date": "2024-01-25",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2024/html/ecb.is240125~db0f145c32.en.html",
+      "density": 2.4305,
+      "words": 5719,
+      "weighted_hits": 13.9
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2024-03-06",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/testimony/powell20240306a.htm",
+      "density": 5.0905,
+      "words": 884,
+      "weighted_hits": 4.5
+    },
+    {
+      "institution": "ECB President",
+      "date": "2024-03-07",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2024/html/ecb.is240307~314650bd5c.en.html",
+      "density": 1.755,
+      "words": 5527,
+      "weighted_hits": 9.7
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2024-04-03",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/speech/powell20240403a.htm",
+      "density": 1.1402,
+      "words": 1491,
+      "weighted_hits": 1.7
+    },
+    {
+      "institution": "ECB President",
+      "date": "2024-04-11",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2024/html/ecb.is240411~9974984b58.en.html",
+      "density": 2.0389,
+      "words": 5270,
+      "weighted_hits": 10.74
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2024-05-19",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/speech/powell20240519a.htm",
+      "density": 0.0,
+      "words": 1852,
+      "weighted_hits": 0.0
+    },
+    {
+      "institution": "ECB President",
+      "date": "2024-06-06",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2024/html/ecb.is240606~d32cd6cc8a.en.html",
+      "density": 2.2155,
+      "words": 5958,
+      "weighted_hits": 13.2
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2024-07-09",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/testimony/powell20240709a.htm",
+      "density": 3.1345,
+      "words": 989,
+      "weighted_hits": 3.1
+    },
+    {
+      "institution": "ECB President",
+      "date": "2024-07-18",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2024/html/ecb.is240718~6600b4add6.en.html",
+      "density": 1.5575,
+      "words": 6292,
+      "weighted_hits": 9.8
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2024-08-23",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/speech/powell20240823a.htm",
+      "density": 5.4777,
+      "words": 2355,
+      "weighted_hits": 12.9
+    },
+    {
+      "institution": "ECB President",
+      "date": "2024-09-12",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2024/html/ecb.is240912~4f7b17040c.en.html",
+      "density": 2.3448,
+      "words": 5331,
+      "weighted_hits": 12.5
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2024-09-26",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/speech/powell20240926a.htm",
+      "density": 0.0,
+      "words": 578,
+      "weighted_hits": 0.0
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2024-09-30",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/speech/powell20240930a.htm",
+      "density": 1.5837,
+      "words": 884,
+      "weighted_hits": 1.4
+    },
+    {
+      "institution": "ECB President",
+      "date": "2024-10-17",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2024/html/ecb.is241017~59ad385bab.en.html",
+      "density": 4.2667,
+      "words": 5584,
+      "weighted_hits": 23.82
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2024-11-14",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/speech/powell20241114a.htm",
+      "density": 3.1762,
+      "words": 976,
+      "weighted_hits": 3.1
+    },
+    {
+      "institution": "ECB President",
+      "date": "2024-12-12",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2024/html/ecb.is241212~ce143b3bc8.en.html",
+      "density": 5.9915,
+      "words": 5441,
+      "weighted_hits": 32.6
+    },
+    {
+      "institution": "ECB President",
+      "date": "2025-01-30",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2025/html/ecb.is250130~1f418aa0f4.en.html",
+      "density": 2.3247,
+      "words": 5119,
+      "weighted_hits": 11.9
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2025-02-11",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/testimony/powell20250211a.htm",
+      "density": 5.5,
+      "words": 1000,
+      "weighted_hits": 5.5
+    },
+    {
+      "institution": "ECB President",
+      "date": "2025-03-06",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2025/html/ecb.is250306~4307bd0941.en.html",
+      "density": 4.2046,
+      "words": 5815,
+      "weighted_hits": 24.45
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2025-03-07",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/speech/powell20250307a.htm",
+      "density": 4.6875,
+      "words": 960,
+      "weighted_hits": 4.5
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2025-04-04",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/speech/powell20250404a.htm",
+      "density": 6.129,
+      "words": 930,
+      "weighted_hits": 5.7
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2025-04-16",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/speech/powell20250416a.htm",
+      "density": 4.1427,
+      "words": 869,
+      "weighted_hits": 3.6
+    },
+    {
+      "institution": "ECB President",
+      "date": "2025-04-17",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2025/html/ecb.is250417~091c625eb6.en.html",
+      "density": 5.9638,
+      "words": 5919,
+      "weighted_hits": 35.3
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2025-05-15",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/speech/powell20250515a.htm",
+      "density": 4.1828,
+      "words": 2845,
+      "weighted_hits": 11.9
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2025-05-25",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/speech/powell20250525a.htm",
+      "density": 0.0,
+      "words": 1723,
+      "weighted_hits": 0.0
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2025-06-02",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/speech/powell20250602a.htm",
+      "density": 7.2823,
+      "words": 1332,
+      "weighted_hits": 9.7
+    },
+    {
+      "institution": "ECB President",
+      "date": "2025-06-05",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2025/html/ecb.is250605~f00a36ef2b.en.html",
+      "density": 3.722,
+      "words": 5896,
+      "weighted_hits": 21.94
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2025-06-24",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/testimony/powell20250624a.htm",
+      "density": 2.2152,
+      "words": 948,
+      "weighted_hits": 2.1
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2025-07-22",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/speech/powell20250722a.htm",
+      "density": 0.0,
+      "words": 485,
+      "weighted_hits": 0.0
+    },
+    {
+      "institution": "ECB President",
+      "date": "2025-07-24",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2025/html/ecb.is250724~a66e730494.en.html",
+      "density": 2.8736,
+      "words": 5220,
+      "weighted_hits": 15.0
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2025-08-22",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/speech/powell20250822a.htm",
+      "density": 3.2495,
+      "words": 4093,
+      "weighted_hits": 13.3
+    },
+    {
+      "institution": "ECB President",
+      "date": "2025-09-11",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2025/html/ecb.is250911~a13675b834.en.html",
+      "density": 2.2117,
+      "words": 6149,
+      "weighted_hits": 13.6
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2025-09-23",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/speech/powell20250923a.htm",
+      "density": 7.5939,
+      "words": 1251,
+      "weighted_hits": 9.5
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2025-10-09",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/speech/powell20251009a.htm",
+      "density": 0.0,
+      "words": 330,
+      "weighted_hits": 0.0
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2025-10-14",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/speech/powell20251014a.htm",
+      "density": 2.2383,
+      "words": 4289,
+      "weighted_hits": 9.6
+    },
+    {
+      "institution": "ECB President",
+      "date": "2025-10-30",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2025/html/ecb.is251030~4f74dde15e.en.html",
+      "density": 3.9927,
+      "words": 6537,
+      "weighted_hits": 26.1
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2025-12-01",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/speech/powell20251201a.htm",
+      "density": 0.0,
+      "words": 820,
+      "weighted_hits": 0.0
+    },
+    {
+      "institution": "ECB President",
+      "date": "2025-12-18",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2025/html/ecb.is251218~3a10402adb.en.html",
+      "density": 2.0348,
+      "words": 5455,
+      "weighted_hits": 11.1
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2026-01-11",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/speech/powell20260111a.htm",
+      "density": 0.0,
+      "words": 370,
+      "weighted_hits": 0.0
+    },
+    {
+      "institution": "ECB President",
+      "date": "2026-02-05",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2026/html/ecb.is260205~50858cb986.en.html",
+      "density": 2.3163,
+      "words": 4533,
+      "weighted_hits": 10.5
+    },
+    {
+      "institution": "ECB President",
+      "date": "2026-03-19",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2026/html/ecb.is260319~93b1cbad97.en.html",
+      "density": 4.0367,
+      "words": 4682,
+      "weighted_hits": 18.9
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2026-03-21",
+      "title": "Chair Jerome H. Powell",
+      "url": "https://www.federalreserve.gov/newsevents/speech/powell20260321a.htm",
+      "density": 2.9821,
+      "words": 503,
+      "weighted_hits": 1.5
+    },
+    {
+      "institution": "ECB President",
+      "date": "2026-04-30",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2026/html/ecb.is260430~f99cb123a8.en.html",
+      "density": 2.9985,
+      "words": 6203,
+      "weighted_hits": 18.6
+    },
+    {
+      "institution": "ECB President",
+      "date": "2026-06-11",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2026/html/ecb.is260611~372040d313.en.html",
+      "density": 4.1981,
+      "words": 5799,
+      "weighted_hits": 24.34
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2026-07-14",
+      "title": "Chairman Kevin Warsh",
+      "url": "https://www.federalreserve.gov/newsevents/testimony/warsh20260714a.htm",
+      "density": 0.0,
+      "words": 1397,
+      "weighted_hits": 0.0
+    },
+    {
+      "institution": "ECB President",
+      "date": "2026-07-23",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2026/html/ecb.is260723~b6fadd48f4.en.html",
+      "density": 4.1058,
+      "words": 5150,
+      "weighted_hits": 21.14
+    },
+    {
+      "institution": "Fed Chair",
+      "date": "2026-08-28",
+      "title": "Chairman Kevin Warsh",
+      "url": "https://www.federalreserve.gov/newsevents/speech/warsh20260828a.htm",
+      "density": 1.0935,
+      "words": 4481,
+      "weighted_hits": 4.9
+    },
+    {
+      "institution": "ECB President",
+      "date": "2026-09-10",
+      "title": "ECB monetary policy statement",
+      "url": "https://www.ecb.europa.eu/press/press_conference/monetary-policy-statement/2026/html/ecb.is260910~6a45359cfc.en.html",
+      "density": 3.0071,
+      "words": 5753,
+      "weighted_hits": 17.3
+    }
+  ],
+  "records": [
+    {
+      "date": "2024-01-01",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": null,
+      "ecb_density": null,
+      "coverage": 0
+    },
+    {
+      "date": "2024-01-08",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": null,
+      "ecb_density": null,
+      "coverage": 0
+    },
+    {
+      "date": "2024-01-15",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": null,
+      "ecb_density": null,
+      "coverage": 0
+    },
+    {
+      "date": "2024-01-22",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": null,
+      "ecb_density": null,
+      "coverage": 0
+    },
+    {
+      "date": "2024-01-29",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": null,
+      "ecb_density": 2.4305,
+      "coverage": 1
+    },
+    {
+      "date": "2024-02-05",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": null,
+      "ecb_density": 2.4305,
+      "coverage": 1
+    },
+    {
+      "date": "2024-02-12",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": null,
+      "ecb_density": 2.4305,
+      "coverage": 1
+    },
+    {
+      "date": "2024-02-19",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": null,
+      "ecb_density": 2.4305,
+      "coverage": 1
+    },
+    {
+      "date": "2024-02-26",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": null,
+      "ecb_density": 2.4305,
+      "coverage": 1
+    },
+    {
+      "date": "2024-03-04",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": null,
+      "ecb_density": 2.4305,
+      "coverage": 1
+    },
+    {
+      "date": "2024-03-11",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": 5.0905,
+      "ecb_density": 1.9314,
+      "coverage": 2
+    },
+    {
+      "date": "2024-03-18",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": 5.0905,
+      "ecb_density": 1.9314,
+      "coverage": 2
+    },
+    {
+      "date": "2024-03-25",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": 5.0905,
+      "ecb_density": 1.9314,
+      "coverage": 2
+    },
+    {
+      "date": "2024-04-01",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": 5.0905,
+      "ecb_density": 1.9314,
+      "coverage": 2
+    },
+    {
+      "date": "2024-04-08",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": 2.457,
+      "ecb_density": 1.9314,
+      "coverage": 2
+    },
+    {
+      "date": "2024-04-15",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": 2.457,
+      "ecb_density": 1.9999,
+      "coverage": 2
+    },
+    {
+      "date": "2024-04-22",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": 2.457,
+      "ecb_density": 1.9549,
+      "coverage": 2
+    },
+    {
+      "date": "2024-04-29",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": 2.457,
+      "ecb_density": 1.9549,
+      "coverage": 2
+    },
+    {
+      "date": "2024-05-06",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": 2.457,
+      "ecb_density": 1.9549,
+      "coverage": 2
+    },
+    {
+      "date": "2024-05-13",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": 2.457,
+      "ecb_density": 1.9549,
+      "coverage": 2
+    },
+    {
+      "date": "2024-05-20",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": 0.7972,
+      "ecb_density": 1.9549,
+      "coverage": 2
+    },
+    {
+      "date": "2024-05-27",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": 0.7972,
+      "ecb_density": 1.9549,
+      "coverage": 2
+    },
+    {
+      "date": "2024-06-03",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": 0.2766,
+      "ecb_density": 2.0389,
+      "coverage": 2
+    },
+    {
+      "date": "2024-06-10",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": 0.2766,
+      "ecb_density": 2.1802,
+      "coverage": 2
+    },
+    {
+      "date": "2024-06-17",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": 0.2766,
+      "ecb_density": 2.1802,
+      "coverage": 2
+    },
+    {
+      "date": "2024-06-24",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": 0.2766,
+      "ecb_density": 2.1802,
+      "coverage": 2
+    },
+    {
+      "date": "2024-07-01",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": 0.0,
+      "ecb_density": 2.1802,
+      "coverage": 2
+    },
+    {
+      "date": "2024-07-08",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": 0.0,
+      "ecb_density": 2.2155,
+      "coverage": 2
+    },
+    {
+      "date": "2024-07-15",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": 2.4432,
+      "ecb_density": 2.2155,
+      "coverage": 2
+    },
+    {
+      "date": "2024-07-22",
+      "score": 50.0,
+      "level_score": 50.0,
+      "acceleration_score": 50.0,
+      "fed_density": 2.4432,
+      "ecb_density": 1.7294,
+      "coverage": 2
+    },
+    {
+      "date": "2024-07-29",
+      "score": 37.9,
+      "level_score": 32.7,
+      "acceleration_score": 50.0,
+      "fed_density": 2.4432,
+      "ecb_density": 1.7294,
+      "coverage": 2
+    },
+    {
+      "date": "2024-08-05",
+      "score": 42.7,
+      "level_score": 29.6,
+      "acceleration_score": 73.1,
+      "fed_density": 2.4432,
+      "ecb_density": 1.7294,
+      "coverage": 2
+    },
+    {
+      "date": "2024-08-12",
+      "score": 83.3,
+      "level_score": 85.7,
+      "acceleration_score": 77.8,
+      "fed_density": 3.1345,
+      "ecb_density": 1.7294,
+      "coverage": 2
+    },
+    {
+      "date": "2024-08-19",
+      "score": 80.6,
+      "level_score": 84.5,
+      "acceleration_score": 71.4,
+      "fed_density": 3.1345,
+      "ecb_density": 1.7294,
+      "coverage": 2
+    },
+    {
+      "date": "2024-08-26",
+      "score": 88.6,
+      "level_score": 86.7,
+      "acceleration_score": 93.1,
+      "fed_density": 4.8986,
+      "ecb_density": 1.7294,
+      "coverage": 2
+    },
+    {
+      "date": "2024-09-02",
+      "score": 84.7,
+      "level_score": 83.9,
+      "acceleration_score": 86.7,
+      "fed_density": 4.8986,
+      "ecb_density": 1.5575,
+      "coverage": 2
+    },
+    {
+      "date": "2024-09-09",
+      "score": 80.2,
+      "level_score": 82.8,
+      "acceleration_score": 74.2,
+      "fed_density": 4.8986,
+      "ecb_density": 1.5575,
+      "coverage": 2
+    },
+    {
+      "date": "2024-09-16",
+      "score": 92.7,
+      "level_score": 99.0,
+      "acceleration_score": 78.1,
+      "fed_density": 4.8986,
+      "ecb_density": 2.1873,
+      "coverage": 2
+    },
+    {
+      "date": "2024-09-23",
+      "score": 87.2,
+      "level_score": 98.5,
+      "acceleration_score": 60.6,
+      "fed_density": 4.8986,
+      "ecb_density": 2.1873,
+      "coverage": 2
+    },
+    {
+      "date": "2024-09-30",
+      "score": 16.3,
+      "level_score": 22.9,
+      "acceleration_score": 1.0,
+      "fed_density": 1.701,
+      "ecb_density": 2.1873,
+      "coverage": 2
+    },
+    {
+      "date": "2024-10-07",
+      "score": 17.3,
+      "level_score": 22.2,
+      "acceleration_score": 5.7,
+      "fed_density": 1.621,
+      "ecb_density": 2.1873,
+      "coverage": 2
+    },
+    {
+      "date": "2024-10-14",
+      "score": 23.1,
+      "level_score": 27.0,
+      "acceleration_score": 13.9,
+      "fed_density": 1.621,
+      "ecb_density": 2.3448,
+      "coverage": 2
+    },
+    {
+      "date": "2024-10-21",
+      "score": 75.3,
+      "level_score": 76.3,
+      "acceleration_score": 73.0,
+      "fed_density": 1.621,
+      "ecb_density": 3.6978,
+      "coverage": 2
+    },
+    {
+      "date": "2024-10-28",
+      "score": 77.4,
+      "level_score": 75.6,
+      "acceleration_score": 81.6,
+      "fed_density": 1.621,
+      "ecb_density": 3.6978,
+      "coverage": 2
+    },
+    {
+      "date": "2024-11-04",
+      "score": 72.3,
+      "level_score": 72.5,
+      "acceleration_score": 71.8,
+      "fed_density": 1.621,
+      "ecb_density": 3.6978,
+      "coverage": 2
+    },
+    {
+      "date": "2024-11-11",
+      "score": 69.4,
+      "level_score": 75.6,
+      "acceleration_score": 55.0,
+      "fed_density": 1.621,
+      "ecb_density": 3.6978,
+      "coverage": 2
+    },
+    {
+      "date": "2024-11-18",
+      "score": 76.2,
+      "level_score": 78.6,
+      "acceleration_score": 70.7,
+      "fed_density": 2.2737,
+      "ecb_density": 3.6978,
+      "coverage": 2
+    },
+    {
+      "date": "2024-11-25",
+      "score": 72.4,
+      "level_score": 77.9,
+      "acceleration_score": 59.5,
+      "fed_density": 2.2737,
+      "ecb_density": 3.6978,
+      "coverage": 2
+    },
+    {
+      "date": "2024-12-02",
+      "score": 67.8,
+      "level_score": 75.0,
+      "acceleration_score": 51.2,
+      "fed_density": 2.2737,
+      "ecb_density": 3.6978,
+      "coverage": 2
+    },
+    {
+      "date": "2024-12-09",
+      "score": 81.6,
+      "level_score": 84.4,
+      "acceleration_score": 75.0,
+      "fed_density": 2.2737,
+      "ecb_density": 4.2667,
+      "coverage": 2
+    },
+    {
+      "date": "2024-12-16",
+      "score": 97.3,
+      "level_score": 99.0,
+      "acceleration_score": 93.3,
+      "fed_density": 2.2737,
+      "ecb_density": 5.6465,
+      "coverage": 2
+    },
+    {
+      "date": "2024-12-23",
+      "score": 97.3,
+      "level_score": 99.0,
+      "acceleration_score": 93.5,
+      "fed_density": 2.7826,
+      "ecb_density": 5.6465,
+      "coverage": 2
+    },
+    {
+      "date": "2024-12-30",
+      "score": 95.5,
+      "level_score": 99.0,
+      "acceleration_score": 87.2,
+      "fed_density": 3.1762,
+      "ecb_density": 5.6465,
+      "coverage": 2
+    },
+    {
+      "date": "2025-01-06",
+      "score": 91.8,
+      "level_score": 99.0,
+      "acceleration_score": 75.0,
+      "fed_density": 3.1762,
+      "ecb_density": 5.6465,
+      "coverage": 2
+    },
+    {
+      "date": "2025-01-13",
+      "score": 88.9,
+      "level_score": 99.0,
+      "acceleration_score": 65.3,
+      "fed_density": 3.1762,
+      "ecb_density": 5.9915,
+      "coverage": 2
+    },
+    {
+      "date": "2025-01-20",
+      "score": 83.7,
+      "level_score": 99.0,
+      "acceleration_score": 48.0,
+      "fed_density": 3.1762,
+      "ecb_density": 5.9915,
+      "coverage": 2
+    },
+    {
+      "date": "2025-01-27",
+      "score": 81.6,
+      "level_score": 98.1,
+      "acceleration_score": 43.1,
+      "fed_density": 3.1762,
+      "ecb_density": 5.9915,
+      "coverage": 2
+    },
+    {
+      "date": "2025-02-03",
+      "score": 48.1,
+      "level_score": 67.9,
+      "acceleration_score": 1.9,
+      "fed_density": 3.1762,
+      "ecb_density": 3.165,
+      "coverage": 2
+    },
+    {
+      "date": "2025-02-10",
+      "score": 48.9,
+      "level_score": 66.7,
+      "acceleration_score": 7.5,
+      "fed_density": null,
+      "ecb_density": 3.165,
+      "coverage": 1
+    },
+    {
+      "date": "2025-02-17",
+      "score": 87.0,
+      "level_score": 90.9,
+      "acceleration_score": 77.8,
+      "fed_density": 5.5,
+      "ecb_density": 3.165,
+      "coverage": 2
+    },
+    {
+      "date": "2025-02-24",
+      "score": 87.1,
+      "level_score": 90.2,
+      "acceleration_score": 80.0,
+      "fed_density": 5.5,
+      "ecb_density": 3.165,
+      "coverage": 2
+    },
+    {
+      "date": "2025-03-03",
+      "score": 87.8,
+      "level_score": 89.5,
+      "acceleration_score": 83.9,
+      "fed_density": 5.5,
+      "ecb_density": 3.165,
+      "coverage": 2
+    },
+    {
+      "date": "2025-03-10",
+      "score": 77.7,
+      "level_score": 86.2,
+      "acceleration_score": 57.9,
+      "fed_density": 4.9765,
+      "ecb_density": 3.6482,
+      "coverage": 2
+    },
+    {
+      "date": "2025-03-17",
+      "score": 69.3,
+      "level_score": 86.4,
+      "acceleration_score": 29.3,
+      "fed_density": 4.9765,
+      "ecb_density": 3.6482,
+      "coverage": 2
+    },
+    {
+      "date": "2025-03-24",
+      "score": 68.1,
+      "level_score": 84.2,
+      "acceleration_score": 30.5,
+      "fed_density": 4.9765,
+      "ecb_density": 3.6482,
+      "coverage": 2
+    },
+    {
+      "date": "2025-03-31",
+      "score": 67.4,
+      "level_score": 82.0,
+      "acceleration_score": 33.3,
+      "fed_density": 4.9765,
+      "ecb_density": 3.6482,
+      "coverage": 2
+    },
+    {
+      "date": "2025-04-07",
+      "score": 88.5,
+      "level_score": 99.0,
+      "acceleration_score": 63.9,
+      "fed_density": 5.6254,
+      "ecb_density": 3.6482,
+      "coverage": 2
+    },
+    {
+      "date": "2025-04-14",
+      "score": 85.3,
+      "level_score": 99.0,
+      "acceleration_score": 53.2,
+      "fed_density": 5.6254,
+      "ecb_density": 3.6482,
+      "coverage": 2
+    },
+    {
+      "date": "2025-04-21",
+      "score": 95.0,
+      "level_score": 99.0,
+      "acceleration_score": 85.7,
+      "fed_density": 4.9862,
+      "ecb_density": 5.1897,
+      "coverage": 2
+    },
+    {
+      "date": "2025-04-28",
+      "score": 94.1,
+      "level_score": 99.0,
+      "acceleration_score": 82.8,
+      "fed_density": 4.9862,
+      "ecb_density": 5.5043,
+      "coverage": 2
+    },
+    {
+      "date": "2025-05-05",
+      "score": 89.1,
+      "level_score": 99.0,
+      "acceleration_score": 66.2,
+      "fed_density": 4.9862,
+      "ecb_density": 5.5043,
+      "coverage": 2
+    },
+    {
+      "date": "2025-05-12",
+      "score": 81.1,
+      "level_score": 97.0,
+      "acceleration_score": 43.9,
+      "fed_density": 4.9364,
+      "ecb_density": 5.5043,
+      "coverage": 2
+    },
+    {
+      "date": "2025-05-19",
+      "score": 71.7,
+      "level_score": 94.1,
+      "acceleration_score": 19.4,
+      "fed_density": 4.5654,
+      "ecb_density": 5.5043,
+      "coverage": 2
+    },
+    {
+      "date": "2025-05-26",
+      "score": 51.9,
+      "level_score": 71.0,
+      "acceleration_score": 7.4,
+      "fed_density": 2.7999,
+      "ecb_density": 5.5043,
+      "coverage": 2
+    },
+    {
+      "date": "2025-06-02",
+      "score": 81.3,
+      "level_score": 95.7,
+      "acceleration_score": 47.8,
+      "fed_density": 4.2185,
+      "ecb_density": 5.9638,
+      "coverage": 2
+    },
+    {
+      "date": "2025-06-09",
+      "score": 54.6,
+      "level_score": 71.8,
+      "acceleration_score": 14.3,
+      "fed_density": 4.2185,
+      "ecb_density": 4.2358,
+      "coverage": 2
+    },
+    {
+      "date": "2025-06-16",
+      "score": 56.0,
+      "level_score": 72.2,
+      "acceleration_score": 18.3,
+      "fed_density": 4.2185,
+      "ecb_density": 4.2358,
+      "coverage": 2
+    },
+    {
+      "date": "2025-06-23",
+      "score": 56.1,
+      "level_score": 70.5,
+      "acceleration_score": 22.2,
+      "fed_density": 4.2185,
+      "ecb_density": 4.2358,
+      "coverage": 2
+    },
+    {
+      "date": "2025-06-30",
+      "score": 49.5,
+      "level_score": 64.9,
+      "acceleration_score": 13.7,
+      "fed_density": 3.352,
+      "ecb_density": 4.2358,
+      "coverage": 2
+    },
+    {
+      "date": "2025-07-07",
+      "score": 51.3,
+      "level_score": 64.0,
+      "acceleration_score": 21.6,
+      "fed_density": 3.352,
+      "ecb_density": 4.2358,
+      "coverage": 2
+    },
+    {
+      "date": "2025-07-14",
+      "score": 44.3,
+      "level_score": 55.3,
+      "acceleration_score": 18.7,
+      "fed_density": 3.2929,
+      "ecb_density": 3.722,
+      "coverage": 2
+    },
+    {
+      "date": "2025-07-21",
+      "score": 45.7,
+      "level_score": 55.2,
+      "acceleration_score": 23.7,
+      "fed_density": 3.2929,
+      "ecb_density": 3.722,
+      "coverage": 2
+    },
+    {
+      "date": "2025-07-28",
+      "score": 27.2,
+      "level_score": 37.2,
+      "acceleration_score": 3.9,
+      "fed_density": 1.8054,
+      "ecb_density": 3.068,
+      "coverage": 2
+    },
+    {
+      "date": "2025-08-04",
+      "score": 29.2,
+      "level_score": 37.3,
+      "acceleration_score": 10.3,
+      "fed_density": 1.8054,
+      "ecb_density": 3.068,
+      "coverage": 2
+    },
+    {
+      "date": "2025-08-11",
+      "score": 22.8,
+      "level_score": 25.0,
+      "acceleration_score": 17.7,
+      "fed_density": 1.5877,
+      "ecb_density": 3.068,
+      "coverage": 2
+    },
+    {
+      "date": "2025-08-18",
+      "score": 34.6,
+      "level_score": 37.0,
+      "acceleration_score": 28.8,
+      "fed_density": 1.7987,
+      "ecb_density": 3.068,
+      "coverage": 2
+    },
+    {
+      "date": "2025-08-25",
+      "score": 54.5,
+      "level_score": 45.1,
+      "acceleration_score": 76.5,
+      "fed_density": 2.5911,
+      "ecb_density": 3.068,
+      "coverage": 2
+    },
+    {
+      "date": "2025-09-01",
+      "score": 42.5,
+      "level_score": 39.8,
+      "acceleration_score": 48.8,
+      "fed_density": 2.2187,
+      "ecb_density": 2.8736,
+      "coverage": 2
+    },
+    {
+      "date": "2025-09-08",
+      "score": 42.4,
+      "level_score": 39.9,
+      "acceleration_score": 48.2,
+      "fed_density": 2.2187,
+      "ecb_density": 2.8736,
+      "coverage": 2
+    },
+    {
+      "date": "2025-09-15",
+      "score": 24.7,
+      "level_score": 23.5,
+      "acceleration_score": 27.4,
+      "fed_density": 2.2187,
+      "ecb_density": 2.3634,
+      "coverage": 2
+    },
+    {
+      "date": "2025-09-22",
+      "score": 25.6,
+      "level_score": 24.4,
+      "acceleration_score": 28.2,
+      "fed_density": 2.2193,
+      "ecb_density": 2.3634,
+      "coverage": 2
+    },
+    {
+      "date": "2025-09-29",
+      "score": 78.8,
+      "level_score": 70.1,
+      "acceleration_score": 99.0,
+      "fed_density": 5.451,
+      "ecb_density": 2.3634,
+      "coverage": 2
+    },
+    {
+      "date": "2025-10-06",
+      "score": 78.2,
+      "level_score": 69.9,
+      "acceleration_score": 97.7,
+      "fed_density": 5.451,
+      "ecb_density": 2.3634,
+      "coverage": 2
+    },
+    {
+      "date": "2025-10-13",
+      "score": 35.2,
+      "level_score": 41.6,
+      "acceleration_score": 20.5,
+      "fed_density": 2.8788,
+      "ecb_density": 2.3634,
+      "coverage": 2
+    },
+    {
+      "date": "2025-10-20",
+      "score": 30.9,
+      "level_score": 38.9,
+      "acceleration_score": 12.4,
+      "fed_density": 2.7766,
+      "ecb_density": 2.2117,
+      "coverage": 2
+    },
+    {
+      "date": "2025-10-27",
+      "score": 31.0,
+      "level_score": 39.0,
+      "acceleration_score": 12.2,
+      "fed_density": 2.7766,
+      "ecb_density": 2.2117,
+      "coverage": 2
+    },
+    {
+      "date": "2025-11-03",
+      "score": 58.2,
+      "level_score": 54.3,
+      "acceleration_score": 67.0,
+      "fed_density": 2.7766,
+      "ecb_density": 3.5845,
+      "coverage": 2
+    },
+    {
+      "date": "2025-11-10",
+      "score": 61.8,
+      "level_score": 53.8,
+      "acceleration_score": 80.4,
+      "fed_density": 2.7766,
+      "ecb_density": 3.5845,
+      "coverage": 2
+    },
+    {
+      "date": "2025-11-17",
+      "score": 56.1,
+      "level_score": 51.1,
+      "acceleration_score": 67.7,
+      "fed_density": 2.7252,
+      "ecb_density": 3.5845,
+      "coverage": 2
+    },
+    {
+      "date": "2025-11-24",
+      "score": 51.4,
+      "level_score": 51.6,
+      "acceleration_score": 51.1,
+      "fed_density": 2.7252,
+      "ecb_density": 3.5845,
+      "coverage": 2
+    },
+    {
+      "date": "2025-12-01",
+      "score": 20.7,
+      "level_score": 25.0,
+      "acceleration_score": 10.5,
+      "fed_density": 1.1726,
+      "ecb_density": 3.5845,
+      "coverage": 2
+    },
+    {
+      "date": "2025-12-08",
+      "score": 36.1,
+      "level_score": 41.2,
+      "acceleration_score": 24.0,
+      "fed_density": 1.1726,
+      "ecb_density": 3.9927,
+      "coverage": 2
+    },
+    {
+      "date": "2025-12-15",
+      "score": 38.5,
+      "level_score": 41.3,
+      "acceleration_score": 32.0,
+      "fed_density": 1.1726,
+      "ecb_density": 3.9927,
+      "coverage": 2
+    },
+    {
+      "date": "2025-12-22",
+      "score": 6.6,
+      "level_score": 8.1,
+      "acceleration_score": 3.1,
+      "fed_density": 0.4334,
+      "ecb_density": 2.4835,
+      "coverage": 2
+    },
+    {
+      "date": "2025-12-29",
+      "score": 9.3,
+      "level_score": 8.5,
+      "acceleration_score": 11.1,
+      "fed_density": 0.4334,
+      "ecb_density": 2.4835,
+      "coverage": 2
+    },
+    {
+      "date": "2026-01-05",
+      "score": 13.5,
+      "level_score": 9.9,
+      "acceleration_score": 22.0,
+      "fed_density": 0.5228,
+      "ecb_density": 2.4835,
+      "coverage": 2
+    },
+    {
+      "date": "2026-01-12",
+      "score": 10.9,
+      "level_score": 5.9,
+      "acceleration_score": 22.8,
+      "fed_density": 0.0,
+      "ecb_density": 2.4835,
+      "coverage": 2
+    },
+    {
+      "date": "2026-01-19",
+      "score": 15.6,
+      "level_score": 6.8,
+      "acceleration_score": 36.3,
+      "fed_density": 0.0,
+      "ecb_density": 2.4835,
+      "coverage": 2
+    },
+    {
+      "date": "2026-01-26",
+      "score": 8.9,
+      "level_score": 1.0,
+      "acceleration_score": 27.2,
+      "fed_density": 0.0,
+      "ecb_density": 2.0348,
+      "coverage": 2
+    },
+    {
+      "date": "2026-02-02",
+      "score": 11.4,
+      "level_score": 1.0,
+      "acceleration_score": 35.6,
+      "fed_density": 0.0,
+      "ecb_density": 2.0348,
+      "coverage": 2
+    },
+    {
+      "date": "2026-02-09",
+      "score": 16.8,
+      "level_score": 3.8,
+      "acceleration_score": 47.1,
+      "fed_density": 0.0,
+      "ecb_density": 2.2518,
+      "coverage": 2
+    },
+    {
+      "date": "2026-02-16",
+      "score": 18.9,
+      "level_score": 4.3,
+      "acceleration_score": 52.9,
+      "fed_density": 0.0,
+      "ecb_density": 2.2518,
+      "coverage": 2
+    },
+    {
+      "date": "2026-02-23",
+      "score": 20.2,
+      "level_score": 5.8,
+      "acceleration_score": 53.8,
+      "fed_density": 0.0,
+      "ecb_density": 2.2518,
+      "coverage": 2
+    },
+    {
+      "date": "2026-03-02",
+      "score": 18.9,
+      "level_score": 4.8,
+      "acceleration_score": 51.9,
+      "fed_density": 0.0,
+      "ecb_density": 2.2518,
+      "coverage": 2
+    },
+    {
+      "date": "2026-03-09",
+      "score": 19.8,
+      "level_score": 7.2,
+      "acceleration_score": 49.0,
+      "fed_density": 0.0,
+      "ecb_density": 2.2518,
+      "coverage": 2
+    },
+    {
+      "date": "2026-03-16",
+      "score": 22.6,
+      "level_score": 9.6,
+      "acceleration_score": 52.9,
+      "fed_density": 0.0,
+      "ecb_density": 2.3163,
+      "coverage": 2
+    },
+    {
+      "date": "2026-03-23",
+      "score": 68.7,
+      "level_score": 55.8,
+      "acceleration_score": 99.0,
+      "fed_density": 2.5246,
+      "ecb_density": 3.5873,
+      "coverage": 2
+    },
+    {
+      "date": "2026-03-30",
+      "score": 69.1,
+      "level_score": 56.7,
+      "acceleration_score": 98.1,
+      "fed_density": 2.5246,
+      "ecb_density": 3.5873,
+      "coverage": 2
+    },
+    {
+      "date": "2026-04-06",
+      "score": 75.6,
+      "level_score": 66.3,
+      "acceleration_score": 97.1,
+      "fed_density": 2.9821,
+      "ecb_density": 3.5873,
+      "coverage": 2
+    },
+    {
+      "date": "2026-04-13",
+      "score": 72.3,
+      "level_score": 65.4,
+      "acceleration_score": 88.5,
+      "fed_density": 2.9821,
+      "ecb_density": 3.5873,
+      "coverage": 2
+    },
+    {
+      "date": "2026-04-20",
+      "score": 61.9,
+      "level_score": 64.9,
+      "acceleration_score": 54.8,
+      "fed_density": 2.9821,
+      "ecb_density": 3.5873,
+      "coverage": 2
+    },
+    {
+      "date": "2026-04-27",
+      "score": 61.6,
+      "level_score": 65.4,
+      "acceleration_score": 52.9,
+      "fed_density": 2.9821,
+      "ecb_density": 3.5873,
+      "coverage": 2
+    },
+    {
+      "date": "2026-05-04",
+      "score": 48.4,
+      "level_score": 53.8,
+      "acceleration_score": 35.6,
+      "fed_density": 2.9821,
+      "ecb_density": 3.2697,
+      "coverage": 2
+    },
+    {
+      "date": "2026-05-11",
+      "score": 48.9,
+      "level_score": 53.8,
+      "acceleration_score": 37.5,
+      "fed_density": 2.9821,
+      "ecb_density": 3.2697,
+      "coverage": 2
+    },
+    {
+      "date": "2026-05-18",
+      "score": 48.2,
+      "level_score": 51.9,
+      "acceleration_score": 39.4,
+      "fed_density": 2.9821,
+      "ecb_density": 3.2697,
+      "coverage": 2
+    },
+    {
+      "date": "2026-05-25",
+      "score": 49.5,
+      "level_score": 53.4,
+      "acceleration_score": 40.4,
+      "fed_density": 2.9821,
+      "ecb_density": 3.2697,
+      "coverage": 2
+    },
+    {
+      "date": "2026-06-01",
+      "score": 50.9,
+      "level_score": 52.9,
+      "acceleration_score": 46.2,
+      "fed_density": 2.9821,
+      "ecb_density": 3.2697,
+      "coverage": 2
+    },
+    {
+      "date": "2026-06-08",
+      "score": 47.9,
+      "level_score": 49.5,
+      "acceleration_score": 44.2,
+      "fed_density": 2.9821,
+      "ecb_density": 3.2697,
+      "coverage": 2
+    },
+    {
+      "date": "2026-06-15",
+      "score": 78.3,
+      "level_score": 73.1,
+      "acceleration_score": 90.4,
+      "fed_density": null,
+      "ecb_density": 3.8848,
+      "coverage": 1
+    },
+    {
+      "date": "2026-06-22",
+      "score": 75.9,
+      "level_score": 72.6,
+      "acceleration_score": 83.7,
+      "fed_density": null,
+      "ecb_density": 3.8848,
+      "coverage": 1
+    },
+    {
+      "date": "2026-06-29",
+      "score": 73.0,
+      "level_score": 72.1,
+      "acceleration_score": 75.0,
+      "fed_density": null,
+      "ecb_density": 3.8848,
+      "coverage": 1
+    },
+    {
+      "date": "2026-07-06",
+      "score": 66.7,
+      "level_score": 70.2,
+      "acceleration_score": 58.7,
+      "fed_density": null,
+      "ecb_density": 3.8848,
+      "coverage": 1
+    },
+    {
+      "date": "2026-07-13",
+      "score": 62.3,
+      "level_score": 71.6,
+      "acceleration_score": 40.4,
+      "fed_density": null,
+      "ecb_density": 3.8848,
+      "coverage": 1
+    },
+    {
+      "date": "2026-07-20",
+      "score": 9.7,
+      "level_score": 13.5,
+      "acceleration_score": 1.0,
+      "fed_density": 0.0,
+      "ecb_density": 3.8848,
+      "coverage": 2
+    },
+    {
+      "date": "2026-07-27",
+      "score": 12.3,
+      "level_score": 16.3,
+      "acceleration_score": 2.9,
+      "fed_density": 0.0,
+      "ecb_density": 4.1299,
+      "coverage": 2
+    },
+    {
+      "date": "2026-08-03",
+      "score": 14.4,
+      "level_score": 16.8,
+      "acceleration_score": 8.7,
+      "fed_density": 0.0,
+      "ecb_density": 4.1299,
+      "coverage": 2
+    },
+    {
+      "date": "2026-08-10",
+      "score": 18.8,
+      "level_score": 17.3,
+      "acceleration_score": 22.1,
+      "fed_density": 0.0,
+      "ecb_density": 4.1299,
+      "coverage": 2
+    },
+    {
+      "date": "2026-08-17",
+      "score": 26.4,
+      "level_score": 16.3,
+      "acceleration_score": 50.0,
+      "fed_density": 0.0,
+      "ecb_density": 4.1299,
+      "coverage": 2
+    },
+    {
+      "date": "2026-08-24",
+      "score": 26.5,
+      "level_score": 18.8,
+      "acceleration_score": 44.7,
+      "fed_density": 0.0,
+      "ecb_density": 4.1299,
+      "coverage": 2
+    },
+    {
+      "date": "2026-08-31",
+      "score": 43.2,
+      "level_score": 27.9,
+      "acceleration_score": 78.8,
+      "fed_density": 0.8233,
+      "ecb_density": 4.1299,
+      "coverage": 2
+    },
+    {
+      "date": "2026-09-07",
+      "score": 40.0,
+      "level_score": 27.9,
+      "acceleration_score": 68.3,
+      "fed_density": 0.8233,
+      "ecb_density": 4.1058,
+      "coverage": 2
+    },
+    {
+      "date": "2026-09-14",
+      "score": 21.2,
+      "level_score": 16.3,
+      "acceleration_score": 32.7,
+      "fed_density": 0.8233,
+      "ecb_density": 3.2589,
+      "coverage": 2
+    },
+    {
+      "date": "2026-09-21",
+      "score": 21.9,
+      "level_score": 16.8,
+      "acceleration_score": 33.7,
+      "fed_density": 0.8233,
+      "ecb_density": 3.2589,
+      "coverage": 2
+    },
+    {
+      "date": "2026-09-28",
+      "score": 22.5,
+      "level_score": 17.3,
+      "acceleration_score": 34.6,
+      "fed_density": 0.8233,
+      "ecb_density": 3.2589,
+      "coverage": 2
+    },
+    {
+      "date": "2026-10-05",
+      "score": 24.6,
+      "level_score": 18.3,
+      "acceleration_score": 39.4,
+      "fed_density": 0.8233,
+      "ecb_density": 3.2589,
+      "coverage": 2
+    },
+    {
+      "date": "2026-10-12",
+      "score": 34.0,
+      "level_score": 23.1,
+      "acceleration_score": 59.6,
+      "fed_density": 1.0935,
+      "ecb_density": 3.2589,
+      "coverage": 2
+    }
+  ]
+}

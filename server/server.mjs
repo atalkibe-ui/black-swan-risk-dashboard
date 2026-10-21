@@ -213,10 +213,30 @@ async function getLatest() {
   }
 }
 
+async function readiness() {
+  const checks = {
+    dashboard: false,
+    prompt: false,
+    model: Boolean(process.env.OPENAI_MODEL),
+  };
+  try {
+    await readFile(dashboardPath);
+    checks.dashboard = true;
+  } catch {}
+  try {
+    checks.prompt = Boolean((await readFile(promptPath, 'utf8')).trim());
+  } catch {}
+  return { ready: Object.values(checks).every(Boolean), checks };
+}
+
 async function handle(request, response) {
   const url = new URL(request.url, `http://${request.headers.host || 'localhost'}`);
   if (request.method === 'GET' && url.pathname === '/health') {
     return json(response, 200, { status: 'ok' });
+  }
+  if (request.method === 'GET' && url.pathname === '/ready') {
+    const state = await readiness();
+    return json(response, state.ready ? 200 : 503, state);
   }
   if (request.method === 'GET' && url.pathname === '/api/ai-analysis') {
     const latest = await getLatest();
@@ -258,3 +278,12 @@ server.listen(port, host, () => {
   console.log(`Black Swan dashboard server listening on http://${host}:${port}`);
   console.log(`AI prompt: ${promptPath}`);
 });
+
+function shutdown(signal) {
+  console.log(`${signal} received; stopping server.`);
+  server.close((error) => process.exit(error ? 1 : 0));
+  setTimeout(() => process.exit(1), 10_000).unref();
+}
+
+process.on('SIGTERM', () => shutdown('SIGTERM'));
+process.on('SIGINT', () => shutdown('SIGINT'));

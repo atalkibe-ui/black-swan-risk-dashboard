@@ -1,0 +1,7 @@
+.cache/
+.venv/
+**/__pycache__/
+*.py[cod]
+*.env
+server/data/
+server/prompts/*.local.txt

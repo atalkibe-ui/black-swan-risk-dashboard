@@ -1,0 +1,92 @@
+{
+  "method": {
+    "warning_window_weeks": 12,
+    "warning_window_excludes_event_week": true,
+    "threshold": 70.0,
+    "reaction_exclusion_weeks": 4,
+    "auc_window_weeks": 4,
+    "auc_start": "2007-01-01"
+  },
+  "summary": {
+    "events_warned": 6,
+    "events_total": 7,
+    "event_hit_rate": 0.857,
+    "roc_auc_4w": 0.633,
+    "alert_weeks": 263,
+    "false_alert_weeks": 200,
+    "false_alert_episodes": 21,
+    "weeks_tested": 1033
+  },
+  "events": [
+    {
+      "event_date": "2008-09-15",
+      "event": "Банкротство Lehman Brothers",
+      "event_week": "2008-09-14",
+      "pre_event_peak": 85.0,
+      "peak_date": "2008-07-20",
+      "lead_weeks": 8,
+      "warning_70": true,
+      "score_at_event": 87.3
+    },
+    {
+      "event_date": "2011-08-05",
+      "event": "Понижение рейтинга США и пик долгового кризиса Европы",
+      "event_week": "2011-07-31",
+      "pre_event_peak": 53.2,
+      "peak_date": "2011-06-26",
+      "lead_weeks": 5,
+      "warning_70": false,
+      "score_at_event": 62.0
+    },
+    {
+      "event_date": "2014-11-27",
+      "event": "Решение OPEC и ускорение обвала цен на нефть",
+      "event_week": "2014-11-23",
+      "pre_event_peak": 74.8,
+      "peak_date": "2014-10-26",
+      "lead_weeks": 4,
+      "warning_70": true,
+      "score_at_event": 76.8
+    },
+    {
+      "event_date": "2015-08-11",
+      "event": "Девальвация юаня и глобальная распродажа",
+      "event_week": "2015-08-09",
+      "pre_event_peak": 72.4,
+      "peak_date": "2015-08-02",
+      "lead_weeks": 1,
+      "warning_70": true,
+      "score_at_event": 73.2
+    },
+    {
+      "event_date": "2020-03-11",
+      "event": "Объявление пандемии COVID-19",
+      "event_week": "2020-03-08",
+      "pre_event_peak": 70.5,
+      "peak_date": "2020-03-01",
+      "lead_weeks": 1,
+      "warning_70": true,
+      "score_at_event": 72.2
+    },
+    {
+      "event_date": "2022-02-24",
+      "event": "Эскалация конфликта Россия–Украина",
+      "event_week": "2022-02-20",
+      "pre_event_peak": 77.7,
+      "peak_date": "2021-12-05",
+      "lead_weeks": 11,
+      "warning_70": true,
+      "score_at_event": 70.9
+    },
+    {
+      "event_date": "2023-03-10",
+      "event": "Крах Silicon Valley Bank",
+      "event_week": "2023-03-05",
+      "pre_event_peak": 80.6,
+      "peak_date": "2022-12-11",
+      "lead_weeks": 12,
+      "warning_70": true,
+      "score_at_event": 75.4
+    }
+  ]
+}

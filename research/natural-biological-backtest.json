@@ -1,0 +1,114 @@
+{
+  "method": {
+    "warning_window_weeks": 12,
+    "warning_window_excludes_event_week": true,
+    "threshold": 80.0,
+    "reaction_exclusion_weeks": 4,
+    "auc_window_weeks": 4
+  },
+  "summary": {
+    "events_warned": 1,
+    "events_total": 7,
+    "event_hit_rate": 0.143,
+    "roc_auc_4w": 0.702,
+    "alert_weeks": 30,
+    "false_alert_weeks": 24,
+    "false_alert_episodes": 10,
+    "weeks_tested": 981
+  },
+  "threshold_sensitivity": {
+    "70": {
+      "events_warned": 6,
+      "event_hit_rate": 0.857,
+      "alert_weeks": 185,
+      "false_alert_weeks": 147,
+      "false_alert_episodes": 49
+    },
+    "75": {
+      "events_warned": 4,
+      "event_hit_rate": 0.571,
+      "alert_weeks": 75,
+      "false_alert_weeks": 57,
+      "false_alert_episodes": 23
+    },
+    "80": {
+      "events_warned": 1,
+      "event_hit_rate": 0.143,
+      "alert_weeks": 30,
+      "false_alert_weeks": 24,
+      "false_alert_episodes": 10
+    }
+  },
+  "events": [
+    {
+      "event_date": "2009-06-11",
+      "event": "Объявление пандемии гриппа A(H1N1)",
+      "event_week": "2009-06-07",
+      "pre_event_peak": 75.7,
+      "peak_date": "2009-05-10",
+      "lead_weeks": 4,
+      "warning_80": false,
+      "score_at_event": 62.8
+    },
+    {
+      "event_date": "2014-08-08",
+      "event": "WHO PHEIC: вспышка Ebola в Западной Африке",
+      "event_week": "2014-08-03",
+      "pre_event_peak": 66.4,
+      "peak_date": "2014-07-27",
+      "lead_weeks": 1,
+      "warning_80": false,
+      "score_at_event": 71.2
+    },
+    {
+      "event_date": "2016-02-01",
+      "event": "WHO PHEIC: вирус Zika",
+      "event_week": "2016-01-31",
+      "pre_event_peak": 73.6,
+      "peak_date": "2016-01-24",
+      "lead_weeks": 1,
+      "warning_80": false,
+      "score_at_event": 76.1
+    },
+    {
+      "event_date": "2020-01-30",
+      "event": "WHO PHEIC: новый коронавирус",
+      "event_week": "2020-01-26",
+      "pre_event_peak": 77.2,
+      "peak_date": "2020-01-19",
+      "lead_weeks": 1,
+      "warning_80": false,
+      "score_at_event": 81.4
+    },
+    {
+      "event_date": "2022-07-23",
+      "event": "WHO PHEIC: глобальная вспышка mpox",
+      "event_week": "2022-07-17",
+      "pre_event_peak": 83.7,
+      "peak_date": "2022-05-29",
+      "lead_weeks": 7,
+      "warning_80": true,
+      "score_at_event": 47.0
+    },
+    {
+      "event_date": "2024-04-06",
+      "event": "Крупнейшие паводки в Казахстане",
+      "event_week": "2024-03-31",
+      "pre_event_peak": 72.4,
+      "peak_date": "2024-02-18",
+      "lead_weeks": 6,
+      "warning_80": false,
+      "score_at_event": 47.0
+    },
+    {
+      "event_date": "2024-08-14",
+      "event": "WHO PHEIC: новая вспышка mpox в Африке",
+      "event_week": "2024-08-11",
+      "pre_event_peak": 78.6,
+      "peak_date": "2024-06-16",
+      "lead_weeks": 8,
+      "warning_80": false,
+      "score_at_event": 59.6
+    }
+  ]
+}

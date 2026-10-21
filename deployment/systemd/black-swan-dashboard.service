@@ -1,0 +1,35 @@
+[Unit]
+Description=Kazakhstan Black Swan Risk Dashboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=black-swan
+Group=black-swan
+WorkingDirectory=/opt/black-swan-dashboard/current/server
+Environment=NODE_ENV=production
+EnvironmentFile=/etc/black-swan-dashboard/black-swan.env
+ExecStartPre=/usr/bin/test -r /opt/black-swan-dashboard/current/dashboard/black-swan-dashboard.html
+ExecStartPre=/usr/bin/test -r /opt/black-swan-dashboard/current/server/prompts/analysis-prompt.txt
+ExecStart=/usr/bin/node /opt/black-swan-dashboard/current/server/server.mjs
+Restart=on-failure
+RestartSec=5s
+TimeoutStopSec=15s
+UMask=0077
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadOnlyPaths=/opt/black-swan-dashboard
+ReadWritePaths=/var/lib/black-swan-dashboard/runtime
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
