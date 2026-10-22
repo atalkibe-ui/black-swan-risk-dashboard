@@ -30,6 +30,8 @@ required = (
     "DEESCALATION_DATA_START",
     "NATURAL_BIOLOGICAL_DATA_START",
     "Список потенциальных Black swan событий",
+    "ai-analysis-file",
+    "Документ Word (.docx)",
     "api/data-refresh",
     "data-refresh-label",
 )

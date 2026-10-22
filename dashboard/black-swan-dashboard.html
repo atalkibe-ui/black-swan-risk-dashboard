@@ -267,14 +267,15 @@
         <div class="ai-toolbar">
           <div>
             <h2 id="ai-analysis-heading">Список потенциальных Black swan событий</h2>
-            <p class="ai-status" id="ai-analysis-status" role="status" aria-live="polite">Последний ответ не загружен</p>
+            <p class="ai-status" id="ai-analysis-status" role="status" aria-live="polite">Выберите документ Word (.docx)</p>
           </div>
-          <button class="ai-refresh" id="ai-analysis-refresh" type="button" title="Обновить аналитический комментарий">
+          <button class="ai-refresh" id="ai-analysis-refresh" type="button" title="Выбрать Word-документ со списком событий">
             <span class="ai-refresh-icon" aria-hidden="true">&#8635;</span>
             <span>Обновить анализ</span>
           </button>
+          <input id="ai-analysis-file" type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" hidden>
         </div>
-        <div class="ai-answer is-empty" id="ai-analysis-answer" tabindex="0">Анализ пока не сформирован.</div>
+        <div class="ai-answer is-empty" id="ai-analysis-answer" tabindex="0">Файл со списком событий пока не выбран.</div>
         <div class="ai-meta" id="ai-analysis-meta" hidden>
           <span id="ai-analysis-generated"></span>
           <span id="ai-analysis-model"></span>
@@ -512,63 +513,144 @@
     })();
     (() => {
       const button=document.getElementById('ai-analysis-refresh');
+      const fileInput=document.getElementById('ai-analysis-file');
       const answer=document.getElementById('ai-analysis-answer');
       const status=document.getElementById('ai-analysis-status');
       const meta=document.getElementById('ai-analysis-meta');
       const generated=document.getElementById('ai-analysis-generated');
       const model=document.getElementById('ai-analysis-model');
       const snapshot=document.getElementById('ai-analysis-snapshot');
-      const parseNumber=value=>Number(String(value||'').replace(/\s/g,'').replace(',','.'));
-      const text=id=>document.getElementById(id)?.textContent?.trim()||'';
-      const grids=[...document.querySelectorAll('.indicator-grid.five')];
-      const components=(gridIndex,valueId)=>[...grids[gridIndex].querySelectorAll('.indicator-card')].map((card,index)=>({name:card.querySelector('h3')?.textContent?.trim()||'',value:parseNumber(text(`${valueId}-${index}`))}));
-      const dashboardContext=()=>({
-        dashboardUpdated:text('data-refresh-label'),
-        indices:[
-          {name:text('economic-heading'),date:text('snapshot-date'),composite:parseNumber(text('composite')),band:text('band'),redThreshold:80,components:components(0,'score')},
-          {name:text('deescalation-heading'),date:text('deescalation-date'),composite:parseNumber(text('deescalation-composite')),band:text('deescalation-band'),redThreshold:75,components:components(1,'political-score')},
-          {name:text('natural-heading'),date:text('natural-date'),composite:parseNumber(text('natural-composite')),band:text('natural-band'),redThreshold:80,components:components(2,'natural-score')}
-        ]
-      });
+      const storageKey='black-swan-events-document-v1';
+      const maxFileBytes=5*1024*1024;
+      const maxXmlBytes=2*1024*1024;
+      const decoder=new TextDecoder('utf-8');
       const showResult=data=>{
         answer.textContent=data.answer;
         answer.className='ai-answer';
-        status.textContent='Ответ получен';
-        generated.textContent=`Сформировано: ${new Intl.DateTimeFormat('ru-RU',{dateStyle:'medium',timeStyle:'short'}).format(new Date(data.generatedAt))}`;
-        model.textContent=`Модель: ${data.model||'не указана'}`;
-        snapshot.textContent=data.cached?'Сохраненный ответ':'Новый ответ';
+        status.textContent='Файл загружен';
+        generated.textContent=`Загружено: ${new Intl.DateTimeFormat('ru-RU',{dateStyle:'medium',timeStyle:'short'}).format(new Date(data.generatedAt))}`;
+        model.textContent=`Файл: ${data.filename}`;
+        snapshot.textContent='Документ Word (.docx)';
         meta.hidden=false;
       };
-      const readResponse=async response=>{
-        const contentType=response.headers.get('content-type')||'';
-        const data=contentType.includes('application/json')?await response.json():null;
-        if(!response.ok)throw new Error(data?.error||'Внутренний сервис анализа недоступен.');
-        return data;
-      };
-      async function loadLatest(){
-        try{
-          const response=await fetch('./api/ai-analysis',{headers:{Accept:'application/json'}});
-          if(response.status===204||response.status===404)return;
-          showResult(await readResponse(response));
-        }catch(error){
-          console.info('Последний аналитический комментарий недоступен:',error.message);
+      const fail=message=>{throw new Error(message);};
+      const zipEntries=buffer=>{
+        const bytes=new Uint8Array(buffer),view=new DataView(buffer);
+        if(bytes.length<22||view.getUint32(0,true)!==0x04034b50)fail('Выбранный файл не является корректным документом Word (.docx).');
+        let end=-1;
+        for(let offset=bytes.length-22;offset>=Math.max(0,bytes.length-65557);offset--){
+          if(view.getUint32(offset,true)===0x06054b50){end=offset;break;}
         }
-      }
-      async function refresh(){
-        button.disabled=true;button.classList.add('is-loading');status.textContent='Формируется новый ответ...';answer.className='ai-answer is-empty';answer.textContent='Анализ данных...';meta.hidden=true;
+        if(end<0)fail('Не удалось прочитать структуру документа Word.');
+        const count=view.getUint16(end+10,true),centralOffset=view.getUint32(end+16,true);
+        if(count===0xffff||centralOffset===0xffffffff)fail('Документы Word в формате ZIP64 не поддерживаются.');
+        const entries=new Map();
+        let offset=centralOffset;
+        for(let index=0;index<count;index++){
+          if(offset+46>bytes.length||view.getUint32(offset,true)!==0x02014b50)fail('Повреждена структура документа Word.');
+          const flags=view.getUint16(offset+8,true),method=view.getUint16(offset+10,true);
+          const compressedSize=view.getUint32(offset+20,true),uncompressedSize=view.getUint32(offset+24,true);
+          const nameLength=view.getUint16(offset+28,true),extraLength=view.getUint16(offset+30,true),commentLength=view.getUint16(offset+32,true);
+          const localOffset=view.getUint32(offset+42,true),nameStart=offset+46,nameEnd=nameStart+nameLength;
+          if(nameEnd>bytes.length)fail('Повреждено оглавление документа Word.');
+          const name=decoder.decode(bytes.subarray(nameStart,nameEnd));
+          entries.set(name,{flags,method,compressedSize,uncompressedSize,localOffset});
+          offset=nameEnd+extraLength+commentLength;
+        }
+        return entries;
+      };
+      const readZipEntry=async(buffer,entry)=>{
+        const bytes=new Uint8Array(buffer),view=new DataView(buffer),offset=entry.localOffset;
+        if(entry.flags&1)fail('Зашифрованные документы Word не поддерживаются.');
+        if(entry.uncompressedSize>maxXmlBytes)fail('Текст документа превышает допустимый размер.');
+        if(offset+30>bytes.length||view.getUint32(offset,true)!==0x04034b50)fail('Поврежден раздел с текстом документа.');
+        const nameLength=view.getUint16(offset+26,true),extraLength=view.getUint16(offset+28,true);
+        const start=offset+30+nameLength+extraLength,end=start+entry.compressedSize;
+        if(end>bytes.length)fail('Документ Word обрезан или поврежден.');
+        const compressed=bytes.slice(start,end);
+        let result;
+        if(entry.method===0){
+          result=compressed;
+        }else if(entry.method===8){
+          if(typeof DecompressionStream==='undefined')fail('Этот браузер не поддерживает чтение документов Word.');
+          try{
+            const stream=new Blob([compressed]).stream().pipeThrough(new DecompressionStream('deflate-raw'));
+            result=new Uint8Array(await new Response(stream).arrayBuffer());
+          }catch{fail('Не удалось распаковать текст документа Word.');}
+        }else{
+          fail('В документе используется неподдерживаемый метод сжатия.');
+        }
+        if(result.length>maxXmlBytes)fail('Текст документа превышает допустимый размер.');
+        return result;
+      };
+      const documentText=xml=>{
+        const documentXml=new DOMParser().parseFromString(xml,'application/xml');
+        if(documentXml.getElementsByTagName('parsererror').length)fail('Текстовый раздел документа Word поврежден.');
+        const paragraphs=[...documentXml.getElementsByTagNameNS('*','p')];
+        let listNumber=0,previousWasList=false;
+        const lines=[];
+        for(const paragraph of paragraphs){
+          let value='';
+          const append=node=>{
+            if(node.nodeType!==Node.ELEMENT_NODE)return;
+            if(node.localName==='t'){value+=node.textContent||'';return;}
+            if(node.localName==='tab'){value+='\t';return;}
+            if(node.localName==='br'||node.localName==='cr'){value+='\n';return;}
+            for(const child of node.children)append(child);
+          };
+          append(paragraph);
+          value=value.replace(/[ \t]+\n/g,'\n').replace(/[ \t]{2,}/g,' ').trim();
+          if(!value)continue;
+          const isList=paragraph.getElementsByTagNameNS('*','numPr').length>0;
+          if(isList){listNumber=previousWasList?listNumber+1:1;value=`${listNumber}. ${value}`;}
+          else listNumber=0;
+          previousWasList=isList;
+          lines.push(value);
+        }
+        return lines.join('\n\n').trim();
+      };
+      const validateAnswer=text=>{
+        const normalized=text.replace(/\u00a0/g,' ').replace(/\r/g,'').trim();
+        if(normalized.length<150)fail('В документе недостаточно текста для списка Black Swan событий.');
+        if(normalized.length>100000)fail('Текст документа слишком большой.');
+        const listItems=normalized.split(/\n+/).filter(line=>/^\s*(?:\d{1,2}[.)]|[-–—•▪●])\s+\S/.test(line));
+        if(listItems.length<3)fail('В документе должен быть нумерованный или маркированный список минимум из трех событий.');
+        if(!/(?:black\s*swan|ч[её]рн\w*\s+лебед\w*|событ\w*|кризис\w*|шок\w*|риск\w*)/i.test(normalized))fail('Содержимое документа не похоже на список Black Swan событий.');
+        return normalized;
+      };
+      const readDocx=async file=>{
+        if(!/\.docx$/i.test(file.name))fail('Выберите файл Word в формате .docx. Формат .doc не поддерживается.');
+        if(file.size===0)fail('Выбранный файл пуст.');
+        if(file.size>maxFileBytes)fail('Размер Word-документа не должен превышать 5 МБ.');
+        const buffer=await file.arrayBuffer(),entries=zipEntries(buffer);
+        if(!entries.has('[Content_Types].xml')||!entries.has('word/document.xml'))fail('Файл не содержит обязательную структуру документа Word (.docx).');
+        const xml=decoder.decode(await readZipEntry(buffer,entries.get('word/document.xml')));
+        return validateAnswer(documentText(xml));
+      };
+      const save=data=>{
+        try{localStorage.setItem(storageKey,JSON.stringify(data));}catch{}
+      };
+      const restore=()=>{
         try{
-          const response=await fetch('./api/ai-analysis',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({context:dashboardContext()})});
-          showResult(await readResponse(response));
+          const saved=JSON.parse(localStorage.getItem(storageKey)||'null');
+          if(saved?.answer&&saved?.filename&&saved?.generatedAt)showResult(saved);
+        }catch{}
+      };
+      const loadFile=async file=>{
+        button.disabled=true;button.classList.add('is-loading');status.textContent='Проверка документа...';
+        try{
+          const data={answer:await readDocx(file),filename:file.name,generatedAt:new Date().toISOString()};
+          showResult(data);save(data);
         }catch(error){
-          answer.textContent=error.message||'Не удалось получить аналитический комментарий.';
-          answer.className='ai-answer is-error';
-          status.textContent='Ошибка обновления';
+          answer.textContent=error.message||'Не удалось прочитать документ Word.';
+          answer.className='ai-answer is-error';status.textContent='Файл отклонен';meta.hidden=true;
         }finally{
           button.disabled=false;button.classList.remove('is-loading');
         }
-      }
-      button.addEventListener('click',refresh);
-      loadLatest();
+      };
+      button.addEventListener('click',()=>{fileInput.value='';fileInput.click();});
+      fileInput.addEventListener('change',()=>{if(fileInput.files?.[0])loadFile(fileInput.files[0]);});
+      restore();
     })();
   </script>
 </body>
