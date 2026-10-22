@@ -26478,17 +26478,17 @@
       "date": "2026-10-18",
       "values": [
         68.1,
-        58.3,
+        56.1,
         98.6,
-        38.9,
+        40.2,
         51.2
       ],
-      "composite": 65.8,
+      "composite": 65.5,
       "pandemic": {
         "official_outbreak": 68.1,
-        "respiratory": 58.3,
+        "respiratory": 56.1,
         "news": 98.6,
-        "flunet_coverage": 0.2,
+        "flunet_coverage": 0.88,
         "don_reports_7d": 1,
         "news_mentions_7d": 131,
         "news_sources_7d": 102,
@@ -26497,7 +26497,7 @@
       "flood": {
         "dynamic": 30.4,
         "seasonality": 40.4,
-        "forecast": 62.8
+        "forecast": 69.3
       },
       "source": "factual"
     }

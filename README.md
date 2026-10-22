@@ -13,6 +13,12 @@
 
 Полная инструкция: [`deployment/internal-deployment-guide.md`](deployment/internal-deployment-guide.md).
 
+Архив для передачи во внутренний контур вместе с SHA-256 формируется так:
+
+```bash
+deployment/build-transfer-package.sh /tmp/black-swan-dashboard-transfer.tar.gz
+```
+
 Быстрая локальная проверка:
 
 ```bash

@@ -13,16 +13,17 @@ from pathlib import Path
 
 root = Path.cwd()
 checks = {
-    "gdelt-economic-narrative-history.json": "records",
-    "economic-index-history.json": "records",
-    "political-index-history.json": "snapshots",
-    "natural-biological-history.json": "records",
+    "gdelt-economic-narrative-history.json": ("records", 480),
+    "economic-index-history.json": ("records", 1000),
+    "deescalation-history.json": ("snapshots", 600),
+    "political-index-history.json": ("snapshots", 600),
+    "natural-biological-history.json": ("records", 900),
 }
-for name, key in checks.items():
+for name, (key, minimum) in checks.items():
     payload = json.loads((root / "research" / name).read_text(encoding="utf-8"))
     rows = payload.get(key)
-    if not isinstance(rows, list) or not rows:
-        raise SystemExit(f"{name}: отсутствует непустой массив {key}")
+    if not isinstance(rows, list) or len(rows) < minimum:
+        raise SystemExit(f"{name}: массив {key} содержит меньше {minimum} наблюдений")
 
 html = (root / "dashboard" / "black-swan-dashboard.html").read_text(encoding="utf-8")
 required = (

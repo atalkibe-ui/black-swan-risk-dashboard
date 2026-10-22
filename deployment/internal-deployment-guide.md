@@ -118,8 +118,7 @@ black-swan-risk-dashboard/
 ├── dashboard/black-swan-dashboard.html
 ├── server/
 │   ├── server.mjs
-│   ├── package.json
-│   └── prompts/analysis-prompt.txt
+│   └── package.json
 ├── research/
 │   ├── Blackswan.xlsx
 │   ├── REOK.xlsx
@@ -132,12 +131,18 @@ black-swan-risk-dashboard/
     ├── black-swan.env.example
     ├── nginx/black-swan-dashboard.conf
     ├── systemd/black-swan-dashboard.service
+    ├── build-transfer-package.sh
     ├── refresh-data.sh
     └── validate-release.sh
 ```
 
-Каталоги `.cache`, `__pycache__`, локальные runtime-кэши и реальные секреты в поставку
-не включаются.
+Каталоги `.cache`, `__pycache__`, локальные runtime-кэши, прежние AI-промпты и
+реальные секреты в поставку не включаются. Проверенный архив для передачи и его
+контрольную сумму можно сформировать командой:
+
+```bash
+deployment/build-transfer-package.sh /tmp/black-swan-dashboard-transfer.tar.gz
+```
 
 ## 8. Первичная установка
 
@@ -171,11 +176,12 @@ sudo install -d -o root -g black-swan -m 0750 /etc/black-swan-dashboard
 проверяйте SHA-256. Не клонируйте публичный GitHub непосредственно из production.
 
 ```bash
-RELEASE=2026-10-21.1
+RELEASE=2026-10-22.1
+TRANSFER=/approved/inbox/black-swan-dashboard-transfer.tar.gz
+(cd "$(dirname "$TRANSFER")" && sha256sum -c "$(basename "$TRANSFER").sha256")
 sudo install -d -o root -g root -m 0755 \
   "/opt/black-swan-dashboard/releases/$RELEASE"
-sudo cp -a dashboard server research deployment \
-  "/opt/black-swan-dashboard/releases/$RELEASE/"
+sudo tar -xzf "$TRANSFER" -C "/opt/black-swan-dashboard/releases/$RELEASE"
 sudo chown -R root:root "/opt/black-swan-dashboard/releases/$RELEASE"
 sudo find "/opt/black-swan-dashboard/releases/$RELEASE" -type d -exec chmod 0755 {} \;
 sudo find "/opt/black-swan-dashboard/releases/$RELEASE" -type f -exec chmod 0644 {} \;

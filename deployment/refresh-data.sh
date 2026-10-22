@@ -35,6 +35,7 @@ cd "$APP_ROOT"
   --html "$DASHBOARD"
 
 "$PYTHON" "$RESEARCH/build_deescalation_history.py" \
+  --start 2015-01-04 \
   --cache-dir "$CACHE_ROOT/deescalation-google-news" \
   --output "$RESEARCH/deescalation-history.json" \
   --dashboard "$DASHBOARD"

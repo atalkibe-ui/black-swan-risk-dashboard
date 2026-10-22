@@ -1756,6 +1756,15 @@
       "fed_density": 1.0935,
       "ecb_density": 3.2589,
       "coverage": 2
+    },
+    {
+      "date": "2026-10-19",
+      "score": 24.2,
+      "level_score": 17.3,
+      "acceleration_score": 40.4,
+      "fed_density": 1.0935,
+      "ecb_density": 3.0071,
+      "coverage": 2
     }
   ]
 }

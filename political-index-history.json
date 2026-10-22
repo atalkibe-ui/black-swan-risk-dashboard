@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-21",
+  "generated_at": "2026-10-22",
   "status": "factual_open_data",
   "axes": [
     "russia_deescalation",
@@ -123,7 +123,7 @@
         50.0,
         50.0
       ],
-      "composite": 41.7,
+      "composite": 41.8,
       "raw": {
         "russia_deescalation": 10.735,
         "hormuz_deescalation": {
@@ -510,7 +510,7 @@
       ],
       "composite": 42.9,
       "raw": {
-        "russia_deescalation": 16.1344,
+        "russia_deescalation": 16.1294,
         "hormuz_deescalation": {
           "signal": 0.0,
           "articles": 0.0,
@@ -1663,7 +1663,7 @@
         10.1,
         20.0
       ],
-      "composite": 51.5,
+      "composite": 51.4,
       "raw": {
         "russia_deescalation": 8.65,
         "hormuz_deescalation": {
@@ -1698,7 +1698,7 @@
         13.1,
         20.0
       ],
-      "composite": 29.0,
+      "composite": 29.1,
       "raw": {
         "russia_deescalation": 9.7294,
         "hormuz_deescalation": {
@@ -1838,7 +1838,7 @@
         38.1,
         20.0
       ],
-      "composite": 28.1,
+      "composite": 28.2,
       "raw": {
         "russia_deescalation": 11.625,
         "hormuz_deescalation": {
@@ -1978,7 +1978,7 @@
         75.5,
         20.0
       ],
-      "composite": 59.7,
+      "composite": 59.8,
       "raw": {
         "russia_deescalation": 17.0454,
         "hormuz_deescalation": {
@@ -2083,7 +2083,7 @@
         73.2,
         20.0
       ],
-      "composite": 49.3,
+      "composite": 49.2,
       "raw": {
         "russia_deescalation": 16.1896,
         "hormuz_deescalation": {
@@ -2363,7 +2363,7 @@
         87.9,
         20.0
       ],
-      "composite": 50.6,
+      "composite": 50.5,
       "raw": {
         "russia_deescalation": 13.3,
         "hormuz_deescalation": {
@@ -2538,7 +2538,7 @@
         73.7,
         20.0
       ],
-      "composite": 40.0,
+      "composite": 39.9,
       "raw": {
         "russia_deescalation": 11.4163,
         "hormuz_deescalation": {
@@ -2678,7 +2678,7 @@
         33.2,
         20.0
       ],
-      "composite": 27.9,
+      "composite": 28.0,
       "raw": {
         "russia_deescalation": 11.8725,
         "hormuz_deescalation": {
@@ -2783,7 +2783,7 @@
         35.4,
         20.0
       ],
-      "composite": 50.5,
+      "composite": 50.6,
       "raw": {
         "russia_deescalation": 27.8582,
         "hormuz_deescalation": {
@@ -2853,7 +2853,7 @@
         13.4,
         20.0
       ],
-      "composite": 51.5,
+      "composite": 51.6,
       "raw": {
         "russia_deescalation": 15.1956,
         "hormuz_deescalation": {
@@ -2923,7 +2923,7 @@
         4.9,
         20.0
       ],
-      "composite": 24.1,
+      "composite": 24.0,
       "raw": {
         "russia_deescalation": 17.8563,
         "hormuz_deescalation": {
@@ -3273,7 +3273,7 @@
         51.9,
         20.0
       ],
-      "composite": 31.1,
+      "composite": 31.0,
       "raw": {
         "russia_deescalation": 10.3613,
         "hormuz_deescalation": {
@@ -3308,7 +3308,7 @@
         65.0,
         20.0
       ],
-      "composite": 38.5,
+      "composite": 38.4,
       "raw": {
         "russia_deescalation": 21.292,
         "hormuz_deescalation": {
@@ -3343,7 +3343,7 @@
         62.0,
         20.0
       ],
-      "composite": 34.9,
+      "composite": 34.8,
       "raw": {
         "russia_deescalation": 10.1531,
         "hormuz_deescalation": {
@@ -3518,7 +3518,7 @@
         42.7,
         20.0
       ],
-      "composite": 29.0,
+      "composite": 28.9,
       "raw": {
         "russia_deescalation": 10.7583,
         "hormuz_deescalation": {
@@ -3728,7 +3728,7 @@
         29.8,
         20.0
       ],
-      "composite": 41.2,
+      "composite": 41.3,
       "raw": {
         "russia_deescalation": 17.4418,
         "hormuz_deescalation": {
@@ -3763,7 +3763,7 @@
         20.8,
         20.0
       ],
-      "composite": 43.6,
+      "composite": 43.7,
       "raw": {
         "russia_deescalation": 23.1456,
         "hormuz_deescalation": {
@@ -3940,7 +3940,7 @@
       ],
       "composite": 45.9,
       "raw": {
-        "russia_deescalation": 32.8392,
+        "russia_deescalation": 32.8342,
         "hormuz_deescalation": {
           "signal": 0.0,
           "articles": 0.0,
@@ -4288,7 +4288,7 @@
         39.8,
         20.0
       ],
-      "composite": 27.5,
+      "composite": 27.6,
       "raw": {
         "russia_deescalation": 14.6869,
         "hormuz_deescalation": {
@@ -4533,7 +4533,7 @@
         60.5,
         30.9
       ],
-      "composite": 37.7,
+      "composite": 37.8,
       "raw": {
         "russia_deescalation": 19.1114,
         "hormuz_deescalation": {
@@ -4568,7 +4568,7 @@
         57.2,
         37.2
       ],
-      "composite": 36.7,
+      "composite": 36.8,
       "raw": {
         "russia_deescalation": 13.7444,
         "hormuz_deescalation": {
@@ -4603,7 +4603,7 @@
         51.5,
         41.0
       ],
-      "composite": 42.2,
+      "composite": 42.1,
       "raw": {
         "russia_deescalation": 30.1883,
         "hormuz_deescalation": {
@@ -5128,7 +5128,7 @@
         64.9,
         20.0
       ],
-      "composite": 39.8,
+      "composite": 39.7,
       "raw": {
         "russia_deescalation": 13.5131,
         "hormuz_deescalation": {
@@ -5233,7 +5233,7 @@
         44.8,
         20.0
       ],
-      "composite": 29.3,
+      "composite": 29.4,
       "raw": {
         "russia_deescalation": 12.8175,
         "hormuz_deescalation": {
@@ -5443,7 +5443,7 @@
         78.4,
         20.0
       ],
-      "composite": 48.9,
+      "composite": 48.8,
       "raw": {
         "russia_deescalation": 24.4845,
         "hormuz_deescalation": {
@@ -5653,7 +5653,7 @@
         64.7,
         20.0
       ],
-      "composite": 41.4,
+      "composite": 41.3,
       "raw": {
         "russia_deescalation": 13.8648,
         "hormuz_deescalation": {
@@ -6145,7 +6145,7 @@
       ],
       "composite": 54.3,
       "raw": {
-        "russia_deescalation": 8.8981,
+        "russia_deescalation": 8.9012,
         "hormuz_deescalation": {
           "signal": 0.0,
           "articles": 0.0,
@@ -6248,7 +6248,7 @@
         24.2,
         20.0
       ],
-      "composite": 24.6,
+      "composite": 24.5,
       "raw": {
         "russia_deescalation": 7.4763,
         "hormuz_deescalation": {
@@ -6598,7 +6598,7 @@
         15.4,
         20.0
       ],
-      "composite": 48.8,
+      "composite": 48.7,
       "raw": {
         "russia_deescalation": 10.66,
         "hormuz_deescalation": {
@@ -6773,7 +6773,7 @@
         34.4,
         20.0
       ],
-      "composite": 43.2,
+      "composite": 43.1,
       "raw": {
         "russia_deescalation": 12.8575,
         "hormuz_deescalation": {
@@ -6878,7 +6878,7 @@
         60.8,
         20.0
       ],
-      "composite": 40.2,
+      "composite": 40.3,
       "raw": {
         "russia_deescalation": 17.5725,
         "hormuz_deescalation": {
@@ -7193,7 +7193,7 @@
         56.1,
         30.2
       ],
-      "composite": 39.4,
+      "composite": 39.3,
       "raw": {
         "russia_deescalation": 15.4637,
         "hormuz_deescalation": {
@@ -7298,7 +7298,7 @@
         27.6,
         31.8
       ],
-      "composite": 24.2,
+      "composite": 24.3,
       "raw": {
         "russia_deescalation": 13.8475,
         "hormuz_deescalation": {
@@ -7333,7 +7333,7 @@
         21.5,
         20.0
       ],
-      "composite": 29.4,
+      "composite": 29.5,
       "raw": {
         "russia_deescalation": 13.8219,
         "hormuz_deescalation": {
@@ -7578,7 +7578,7 @@
         81.1,
         28.0
       ],
-      "composite": 51.0,
+      "composite": 51.1,
       "raw": {
         "russia_deescalation": 15.572,
         "hormuz_deescalation": {
@@ -7998,7 +7998,7 @@
         64.9,
         31.9
       ],
-      "composite": 36.5,
+      "composite": 36.6,
       "raw": {
         "russia_deescalation": 8.8481,
         "hormuz_deescalation": {
@@ -8033,7 +8033,7 @@
         46.6,
         20.0
       ],
-      "composite": 29.8,
+      "composite": 29.7,
       "raw": {
         "russia_deescalation": 13.055,
         "hormuz_deescalation": {
@@ -8068,7 +8068,7 @@
         31.0,
         30.3
       ],
-      "composite": 30.1,
+      "composite": 30.0,
       "raw": {
         "russia_deescalation": 15.0649,
         "hormuz_deescalation": {
@@ -8103,7 +8103,7 @@
         20.9,
         31.0
       ],
-      "composite": 43.1,
+      "composite": 43.2,
       "raw": {
         "russia_deescalation": 27.8904,
         "hormuz_deescalation": {
@@ -8943,7 +8943,7 @@
         59.3,
         22.2
       ],
-      "composite": 35.6,
+      "composite": 35.7,
       "raw": {
         "russia_deescalation": 11.3255,
         "hormuz_deescalation": {
@@ -8978,7 +8978,7 @@
         71.7,
         30.0
       ],
-      "composite": 42.7,
+      "composite": 42.6,
       "raw": {
         "russia_deescalation": 16.9709,
         "hormuz_deescalation": {
@@ -9223,7 +9223,7 @@
         18.1,
         20.0
       ],
-      "composite": 22.3,
+      "composite": 22.4,
       "raw": {
         "russia_deescalation": 14.4419,
         "hormuz_deescalation": {
@@ -9398,7 +9398,7 @@
         13.3,
         20.0
       ],
-      "composite": 18.0,
+      "composite": 17.9,
       "raw": {
         "russia_deescalation": 11.6048,
         "hormuz_deescalation": {
@@ -9888,7 +9888,7 @@
         90.0,
         20.0
       ],
-      "composite": 57.0,
+      "composite": 56.9,
       "raw": {
         "russia_deescalation": 18.0294,
         "hormuz_deescalation": {
@@ -10238,7 +10238,7 @@
         76.5,
         28.1
       ],
-      "composite": 55.7,
+      "composite": 55.6,
       "raw": {
         "russia_deescalation": 14.0587,
         "hormuz_deescalation": {
@@ -10763,7 +10763,7 @@
         92.5,
         20.0
       ],
-      "composite": 61.8,
+      "composite": 61.7,
       "raw": {
         "russia_deescalation": 15.04,
         "hormuz_deescalation": {
@@ -10868,7 +10868,7 @@
         75.8,
         42.9
       ],
-      "composite": 48.2,
+      "composite": 48.3,
       "raw": {
         "russia_deescalation": 17.6449,
         "hormuz_deescalation": {
@@ -10938,7 +10938,7 @@
         65.5,
         32.5
       ],
-      "composite": 42.8,
+      "composite": 42.7,
       "raw": {
         "russia_deescalation": 11.3063,
         "hormuz_deescalation": {
@@ -11638,7 +11638,7 @@
         24.8,
         20.0
       ],
-      "composite": 43.3,
+      "composite": 43.4,
       "raw": {
         "russia_deescalation": 14.9794,
         "hormuz_deescalation": {
@@ -11883,7 +11883,7 @@
         38.4,
         31.6
       ],
-      "composite": 48.5,
+      "composite": 48.6,
       "raw": {
         "russia_deescalation": 13.525,
         "hormuz_deescalation": {
@@ -12408,7 +12408,7 @@
         36.8,
         31.6
       ],
-      "composite": 58.9,
+      "composite": 59.0,
       "raw": {
         "russia_deescalation": 45.4692,
         "hormuz_deescalation": {
@@ -12583,7 +12583,7 @@
         33.4,
         20.0
       ],
-      "composite": 53.6,
+      "composite": 53.7,
       "raw": {
         "russia_deescalation": 12.8981,
         "hormuz_deescalation": {
@@ -13108,7 +13108,7 @@
         9.2,
         71.3
       ],
-      "composite": 44.6,
+      "composite": 44.5,
       "raw": {
         "russia_deescalation": 17.1622,
         "hormuz_deescalation": {
@@ -13178,7 +13178,7 @@
         28.0,
         82.8
       ],
-      "composite": 58.6,
+      "composite": 58.7,
       "raw": {
         "russia_deescalation": 37.0152,
         "hormuz_deescalation": {
@@ -13353,7 +13353,7 @@
         11.2,
         83.4
       ],
-      "composite": 52.1,
+      "composite": 52.0,
       "raw": {
         "russia_deescalation": 30.7585,
         "hormuz_deescalation": {
@@ -13703,7 +13703,7 @@
         32.0,
         98.1
       ],
-      "composite": 58.0,
+      "composite": 58.1,
       "raw": {
         "russia_deescalation": 28.6044,
         "hormuz_deescalation": {
@@ -14193,7 +14193,7 @@
         57.6,
         69.5
       ],
-      "composite": 55.6,
+      "composite": 55.5,
       "raw": {
         "russia_deescalation": 9.5094,
         "hormuz_deescalation": {
@@ -14263,7 +14263,7 @@
         37.8,
         78.6
       ],
-      "composite": 59.0,
+      "composite": 58.9,
       "raw": {
         "russia_deescalation": 33.2422,
         "hormuz_deescalation": {
@@ -14333,7 +14333,7 @@
         44.1,
         24.2
       ],
-      "composite": 48.9,
+      "composite": 49.0,
       "raw": {
         "russia_deescalation": 42.7354,
         "hormuz_deescalation": {
@@ -14648,7 +14648,7 @@
         22.2,
         20.0
       ],
-      "composite": 24.7,
+      "composite": 24.8,
       "raw": {
         "russia_deescalation": 19.8007,
         "hormuz_deescalation": {
@@ -14788,7 +14788,7 @@
         54.2,
         22.0
       ],
-      "composite": 56.0,
+      "composite": 55.9,
       "raw": {
         "russia_deescalation": 25.5343,
         "hormuz_deescalation": {
@@ -14823,7 +14823,7 @@
         62.0,
         32.5
       ],
-      "composite": 49.2,
+      "composite": 49.1,
       "raw": {
         "russia_deescalation": 9.6644,
         "hormuz_deescalation": {
@@ -14930,7 +14930,7 @@
       ],
       "composite": 36.5,
       "raw": {
-        "russia_deescalation": 16.1642,
+        "russia_deescalation": 16.1608,
         "hormuz_deescalation": {
           "signal": 0.0,
           "articles": 0.0,
@@ -15313,7 +15313,7 @@
         54.6,
         43.3
       ],
-      "composite": 58.6,
+      "composite": 58.7,
       "raw": {
         "russia_deescalation": 39.6487,
         "hormuz_deescalation": {
@@ -15418,7 +15418,7 @@
         38.5,
         30.2
       ],
-      "composite": 40.6,
+      "composite": 40.5,
       "raw": {
         "russia_deescalation": 25.3698,
         "hormuz_deescalation": {
@@ -15558,7 +15558,7 @@
         14.2,
         22.8
       ],
-      "composite": 34.3,
+      "composite": 34.2,
       "raw": {
         "russia_deescalation": 10.6644,
         "hormuz_deescalation": {
@@ -16013,7 +16013,7 @@
         55.1,
         41.2
       ],
-      "composite": 37.9,
+      "composite": 38.0,
       "raw": {
         "russia_deescalation": 19.3846,
         "hormuz_deescalation": {
@@ -16293,7 +16293,7 @@
         21.5,
         20.0
       ],
-      "composite": 28.3,
+      "composite": 28.2,
       "raw": {
         "russia_deescalation": 16.2631,
         "hormuz_deescalation": {
@@ -16468,7 +16468,7 @@
         15.5,
         74.3
       ],
-      "composite": 42.6,
+      "composite": 42.7,
       "raw": {
         "russia_deescalation": 28.0974,
         "hormuz_deescalation": {
@@ -16678,7 +16678,7 @@
         78.4,
         38.6
       ],
-      "composite": 58.4,
+      "composite": 58.3,
       "raw": {
         "russia_deescalation": 36.9594,
         "hormuz_deescalation": {
@@ -16888,7 +16888,7 @@
         25.6,
         37.9
       ],
-      "composite": 38.8,
+      "composite": 38.9,
       "raw": {
         "russia_deescalation": 27.2283,
         "hormuz_deescalation": {
@@ -17098,7 +17098,7 @@
         57.7,
         30.7
       ],
-      "composite": 37.3,
+      "composite": 37.4,
       "raw": {
         "russia_deescalation": 18.1445,
         "hormuz_deescalation": {
@@ -17238,7 +17238,7 @@
         72.0,
         70.1
       ],
-      "composite": 56.0,
+      "composite": 56.1,
       "raw": {
         "russia_deescalation": 29.8861,
         "hormuz_deescalation": {
@@ -17728,7 +17728,7 @@
         29.1,
         50.4
       ],
-      "composite": 34.8,
+      "composite": 34.9,
       "raw": {
         "russia_deescalation": 27.5989,
         "hormuz_deescalation": {
@@ -17903,7 +17903,7 @@
         81.6,
         29.6
       ],
-      "composite": 52.4,
+      "composite": 52.5,
       "raw": {
         "russia_deescalation": 22.107,
         "hormuz_deescalation": {
@@ -18008,7 +18008,7 @@
         92.1,
         62.5
       ],
-      "composite": 67.8,
+      "composite": 67.7,
       "raw": {
         "russia_deescalation": 35.4649,
         "hormuz_deescalation": {
@@ -18288,7 +18288,7 @@
         81.7,
         27.1
       ],
-      "composite": 48.7,
+      "composite": 48.8,
       "raw": {
         "russia_deescalation": 20.7798,
         "hormuz_deescalation": {
@@ -18568,7 +18568,7 @@
         66.8,
         32.3
       ],
-      "composite": 41.9,
+      "composite": 41.8,
       "raw": {
         "russia_deescalation": 20.3355,
         "hormuz_deescalation": {
@@ -18778,7 +18778,7 @@
         89.7,
         48.1
       ],
-      "composite": 65.9,
+      "composite": 65.8,
       "raw": {
         "russia_deescalation": 28.1581,
         "hormuz_deescalation": {
@@ -18813,7 +18813,7 @@
         93.8,
         36.0
       ],
-      "composite": 68.5,
+      "composite": 68.4,
       "raw": {
         "russia_deescalation": 36.553,
         "hormuz_deescalation": {
@@ -19198,7 +19198,7 @@
         50.3,
         20.0
       ],
-      "composite": 51.1,
+      "composite": 51.0,
       "raw": {
         "russia_deescalation": 37.0868,
         "hormuz_deescalation": {
@@ -19583,7 +19583,7 @@
         90.7,
         21.3
       ],
-      "composite": 60.5,
+      "composite": 60.4,
       "raw": {
         "russia_deescalation": 23.9504,
         "hormuz_deescalation": {
@@ -20003,7 +20003,7 @@
         84.7,
         90.8
       ],
-      "composite": 70.9,
+      "composite": 70.8,
       "raw": {
         "russia_deescalation": 34.3685,
         "hormuz_deescalation": {
@@ -20178,7 +20178,7 @@
         85.1,
         20.0
       ],
-      "composite": 63.5,
+      "composite": 63.6,
       "raw": {
         "russia_deescalation": 26.988,
         "hormuz_deescalation": {
@@ -20353,7 +20353,7 @@
         91.0,
         25.3
       ],
-      "composite": 68.2,
+      "composite": 68.3,
       "raw": {
         "russia_deescalation": 17.2142,
         "hormuz_deescalation": {
@@ -20423,7 +20423,7 @@
         45.0,
         56.8
       ],
-      "composite": 60.7,
+      "composite": 60.6,
       "raw": {
         "russia_deescalation": 21.2006,
         "hormuz_deescalation": {
@@ -20808,7 +20808,7 @@
         39.4,
         22.0
       ],
-      "composite": 60.7,
+      "composite": 60.6,
       "raw": {
         "russia_deescalation": 25.3978,
         "hormuz_deescalation": {
@@ -20983,7 +20983,7 @@
         73.7,
         23.0
       ],
-      "composite": 72.8,
+      "composite": 72.7,
       "raw": {
         "russia_deescalation": 54.1522,
         "hormuz_deescalation": {
@@ -21053,7 +21053,7 @@
         52.5,
         20.0
       ],
-      "composite": 65.2,
+      "composite": 65.1,
       "raw": {
         "russia_deescalation": 28.5651,
         "hormuz_deescalation": {
@@ -21193,7 +21193,7 @@
         68.4,
         29.6
       ],
-      "composite": 74.1,
+      "composite": 74.0,
       "raw": {
         "russia_deescalation": 37.0191,
         "hormuz_deescalation": {
@@ -21228,7 +21228,7 @@
         77.4,
         32.9
       ],
-      "composite": 76.9,
+      "composite": 76.8,
       "raw": {
         "russia_deescalation": 48.4835,
         "hormuz_deescalation": {
@@ -21438,7 +21438,7 @@
         75.0,
         93.5
       ],
-      "composite": 71.6,
+      "composite": 71.7,
       "raw": {
         "russia_deescalation": 50.323,
         "hormuz_deescalation": {
@@ -21537,15 +21537,15 @@
     {
       "date": "2026-10-18",
       "values": [
-        48.8,
+        48.9,
         74.4,
         72.0,
         87.3,
         98.1
       ],
-      "composite": 78.7,
+      "composite": 78.8,
       "raw": {
-        "russia_deescalation": 48.8402,
+        "russia_deescalation": 48.8594,
         "hormuz_deescalation": {
           "signal": 3.4339872044851463,
           "articles": 30.0,
