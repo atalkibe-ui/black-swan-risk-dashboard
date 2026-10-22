@@ -29,7 +29,7 @@ required = (
     "ECONOMIC_INDEX_DATA_START",
     "DEESCALATION_DATA_START",
     "NATURAL_BIOLOGICAL_DATA_START",
-    "Аналитический комментарий",
+    "Список потенциальных Black swan событий",
     "api/data-refresh",
     "data-refresh-label",
 )
