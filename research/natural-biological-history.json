@@ -5,7 +5,7 @@
     "news_note": "M is a cached Google News RSS search-intensity proxy; it has no provider SLA and is intentionally low-weighted.",
     "display_start": "2008-01-06",
     "calibration_start": "2000-01-01",
-    "red_threshold": 80.0,
+    "red_threshold": 70.0,
     "sources": [
       "WHO Disease Outbreak News",
       "WHO FluNet",
@@ -26480,10 +26480,10 @@
         68.1,
         56.1,
         98.6,
-        40.2,
+        32.4,
         51.2
       ],
-      "composite": 65.5,
+      "composite": 64.7,
       "pandemic": {
         "official_outbreak": 68.1,
         "respiratory": 56.1,
@@ -26497,7 +26497,34 @@
       "flood": {
         "dynamic": 30.4,
         "seasonality": 40.4,
-        "forecast": 69.3
+        "forecast": null
+      },
+      "source": "factual"
+    },
+    {
+      "date": "2026-10-25",
+      "values": [
+        67.1,
+        50.0,
+        73.8,
+        39.0,
+        54.8
+      ],
+      "composite": 60.6,
+      "pandemic": {
+        "official_outbreak": 67.1,
+        "respiratory": 50.0,
+        "news": 73.8,
+        "flunet_coverage": 0,
+        "don_reports_7d": 1,
+        "news_mentions_7d": 59,
+        "news_sources_7d": 53,
+        "news_query_split": false
+      },
+      "flood": {
+        "dynamic": 28.1,
+        "seasonality": 37.5,
+        "forecast": 73.4
       },
       "source": "factual"
     }

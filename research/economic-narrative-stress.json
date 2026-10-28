@@ -9271,6 +9271,22 @@
       "level_score": 95.2,
       "acceleration_score": 70.2,
       "score": 88.9
+    },
+    {
+      "date": "2026-10-26",
+      "week_end": "2026-10-25",
+      "intensity": 39.093,
+      "crisis_articles": 71,
+      "economic_articles": 81,
+      "crisis_sources": 54,
+      "economic_sources": 61,
+      "crisis_feed_capped": false,
+      "economic_feed_capped": false,
+      "native_intensity": 88.0884,
+      "source": "Google News RSS, calibrated to GDELT overlap",
+      "level_score": 92.3,
+      "acceleration_score": 44.2,
+      "score": 80.3
     }
   ]
 }

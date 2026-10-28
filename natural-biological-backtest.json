@@ -2,19 +2,19 @@
   "method": {
     "warning_window_weeks": 12,
     "warning_window_excludes_event_week": true,
-    "threshold": 80.0,
+    "threshold": 70.0,
     "reaction_exclusion_weeks": 4,
     "auc_window_weeks": 4
   },
   "summary": {
-    "events_warned": 1,
+    "events_warned": 6,
     "events_total": 7,
-    "event_hit_rate": 0.143,
+    "event_hit_rate": 0.857,
     "roc_auc_4w": 0.702,
-    "alert_weeks": 30,
-    "false_alert_weeks": 24,
-    "false_alert_episodes": 10,
-    "weeks_tested": 981
+    "alert_weeks": 185,
+    "false_alert_weeks": 147,
+    "false_alert_episodes": 49,
+    "weeks_tested": 982
   },
   "threshold_sensitivity": {
     "70": {
@@ -47,7 +47,7 @@
       "pre_event_peak": 75.7,
       "peak_date": "2009-05-10",
       "lead_weeks": 4,
-      "warning_80": false,
+      "warning_70": true,
       "score_at_event": 62.8
     },
     {
@@ -57,7 +57,7 @@
       "pre_event_peak": 66.4,
       "peak_date": "2014-07-27",
       "lead_weeks": 1,
-      "warning_80": false,
+      "warning_70": false,
       "score_at_event": 71.2
     },
     {
@@ -67,7 +67,7 @@
       "pre_event_peak": 73.6,
       "peak_date": "2016-01-24",
       "lead_weeks": 1,
-      "warning_80": false,
+      "warning_70": true,
       "score_at_event": 76.1
     },
     {
@@ -77,7 +77,7 @@
       "pre_event_peak": 77.2,
       "peak_date": "2020-01-19",
       "lead_weeks": 1,
-      "warning_80": false,
+      "warning_70": true,
       "score_at_event": 81.4
     },
     {
@@ -87,7 +87,7 @@
       "pre_event_peak": 83.7,
       "peak_date": "2022-05-29",
       "lead_weeks": 7,
-      "warning_80": true,
+      "warning_70": true,
       "score_at_event": 47.0
     },
     {
@@ -97,7 +97,7 @@
       "pre_event_peak": 72.4,
       "peak_date": "2024-02-18",
       "lead_weeks": 6,
-      "warning_80": false,
+      "warning_70": true,
       "score_at_event": 47.0
     },
     {
@@ -107,7 +107,7 @@
       "pre_event_peak": 78.6,
       "peak_date": "2024-06-16",
       "lead_weeks": 8,
-      "warning_80": false,
+      "warning_70": true,
       "score_at_event": 59.6
     }
   ]

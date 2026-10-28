@@ -26,7 +26,7 @@ GOOGLE_NEWS = "https://news.google.com/rss/search"
 USER_AGENT = "Kazakhstan-development-bank-risk-research/1.0"
 DATA_START = "/* NATURAL_BIOLOGICAL_DATA_START */"
 DATA_END = "/* NATURAL_BIOLOGICAL_DATA_END */"
-ALERT_THRESHOLD = 80.0
+ALERT_THRESHOLD = 70.0
 EVENTS = [
     ("2009-06-11", "Объявление пандемии гриппа A(H1N1)"),
     ("2014-08-08", "WHO PHEIC: вспышка Ebola в Западной Африке"),
@@ -586,14 +586,14 @@ def backtest(records: list[dict[str, object]]) -> dict[str, object]:
             "pre_event_peak": round(peak, 1),
             "peak_date": dates[peak_index].isoformat(),
             "lead_weeks": max(1, round((dates[event_index] - dates[peak_index]).days / 7)),
-            "warning_80": peak >= ALERT_THRESHOLD,
+            "warning_70": peak >= ALERT_THRESHOLD,
             "score_at_event": round(scores[event_index], 1),
         })
 
     labels = [int(value) for value in near_event]
     alerts = [score >= ALERT_THRESHOLD for score in scores]
     false_alerts = [alert and not pre and not after for alert, pre, after in zip(alerts, pre_event, reaction)]
-    hits = sum(bool(item["warning_80"]) for item in event_rows)
+    hits = sum(bool(item["warning_70"]) for item in event_rows)
     sensitivity = {}
     for threshold in (70.0, 75.0, 80.0):
         threshold_alerts = [score >= threshold for score in scores]
@@ -642,21 +642,21 @@ def markdown_report(result: dict[str, object], first_date: str, last_date: str) 
         "",
         "## Итог",
         "",
-        f"- Предупреждение при пороге 80: **{summary['events_warned']} из {summary['events_total']} событий**.",
+        f"- Предупреждение при пороге 70: **{summary['events_warned']} из {summary['events_total']} событий**.",
         f"- Event hit rate: **{summary['event_hit_rate']:.1%}**.",
         f"- ROC AUC для четырех недель перед событием: **{summary['roc_auc_4w']:.3f}**.",
         f"- Ложные тревоги: **{summary['false_alert_episodes']} эпизодов / {summary['false_alert_weeks']} недель**.",
         "",
         "## События",
         "",
-        "| Событие | Пик до события | Дата пика | Лаг | Сигнал ≥80 | На событии |",
+        "| Событие | Пик до события | Дата пика | Лаг | Сигнал ≥70 | На событии |",
         "|---|---:|---|---:|:---:|---:|",
     ]
     for item in result["events"]:
         lines.append(
             f"| {item['event']} ({item['event_date']}) | {item['pre_event_peak']:.1f} | "
             f"{item['peak_date']} | {item['lead_weeks']} нед. | "
-            f"{'да' if item['warning_80'] else 'нет'} | {item['score_at_event']:.1f} |"
+            f"{'да' if item['warning_70'] else 'нет'} | {item['score_at_event']:.1f} |"
         )
     lines.extend([
         "",

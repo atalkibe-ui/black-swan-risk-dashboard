@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22",
+  "generated_at": "2026-10-28",
   "status": "factual_open_data",
   "axes": [
     "russia_deescalation",
@@ -510,7 +510,7 @@
       ],
       "composite": 42.9,
       "raw": {
-        "russia_deescalation": 16.1294,
+        "russia_deescalation": 16.1344,
         "hormuz_deescalation": {
           "signal": 0.0,
           "articles": 0.0,
@@ -6565,7 +6565,7 @@
       ],
       "composite": 46.8,
       "raw": {
-        "russia_deescalation": 15.3144,
+        "russia_deescalation": 15.3194,
         "hormuz_deescalation": {
           "signal": 0.0,
           "articles": 0.0,
@@ -14930,7 +14930,7 @@
       ],
       "composite": 36.5,
       "raw": {
-        "russia_deescalation": 16.1608,
+        "russia_deescalation": 16.1642,
         "hormuz_deescalation": {
           "signal": 0.0,
           "articles": 0.0,
@@ -18185,7 +18185,7 @@
       ],
       "composite": 59.4,
       "raw": {
-        "russia_deescalation": 38.3897,
+        "russia_deescalation": 38.3981,
         "hormuz_deescalation": {
           "signal": 0.0,
           "articles": 0.0,
@@ -21565,6 +21565,41 @@
           "signal": 0.42975125194716607,
           "articles": 1.0,
           "sources": 1.0
+        }
+      },
+      "source": "factual"
+    },
+    {
+      "date": "2026-10-25",
+      "values": [
+        44.9,
+        70.4,
+        79.6,
+        86.9,
+        91.3
+      ],
+      "composite": 76.1,
+      "raw": {
+        "russia_deescalation": 44.9302,
+        "hormuz_deescalation": {
+          "signal": 3.258096538021482,
+          "articles": 25.0,
+          "sources": 24.0
+        },
+        "taiwan_escalation": {
+          "signal": 3.6635616461296463,
+          "articles": 38.0,
+          "sources": 27.0
+        },
+        "other_escalation": {
+          "signal": 2.905579906156817,
+          "articles": 21.0,
+          "sources": 17.0
+        },
+        "kazakhstan_involvement": {
+          "signal": 0.0,
+          "articles": 0.0,
+          "sources": 0.0
         }
       },
       "source": "factual"

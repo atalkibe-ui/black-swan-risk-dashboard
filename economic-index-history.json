@@ -2,7 +2,7 @@
   "method": {
     "frequency": "weekly, Sunday period end",
     "first_date": "2006-01-08",
-    "last_date": "2026-10-18",
+    "last_date": "2026-10-25",
     "monthly_publication_lag_days": 14,
     "reok_publication_lag_days": 45,
     "normalization": "Causal percentile against up to 260 prior weeks; first 52 weeks use neutral 50.",
@@ -15528,15 +15528,15 @@
       "date": "2025-11-02",
       "values": [
         32.0,
-        65.7,
+        65.4,
         18.5,
         71.2,
         61.4
       ],
-      "baseline": 48.3,
+      "baseline": 48.2,
       "h1": 71.2,
-      "h2": 65.7,
-      "composite": 65.0,
+      "h2": 65.4,
+      "composite": 64.8,
       "source": "factual"
     },
     {
@@ -15723,14 +15723,14 @@
       "date": "2026-02-01",
       "values": [
         21.2,
-        46.1,
+        46.2,
         32.0,
         65.0,
         49.6
       ],
       "baseline": 40.2,
       "h1": 65.0,
-      "h2": 46.1,
+      "h2": 46.2,
       "composite": 54.4,
       "source": "factual"
     },
@@ -16287,6 +16287,21 @@
       "h1": 68.3,
       "h2": 59.0,
       "composite": 62.4,
+      "source": "factual"
+    },
+    {
+      "date": "2026-10-25",
+      "values": [
+        56.5,
+        40.9,
+        71.2,
+        32.0,
+        63.6
+      ],
+      "baseline": 52.6,
+      "h1": 71.2,
+      "h2": 56.5,
+      "composite": 63.1,
       "source": "factual"
     }
   ]
