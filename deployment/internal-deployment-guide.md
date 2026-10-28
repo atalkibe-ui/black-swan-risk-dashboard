@@ -348,7 +348,7 @@ curl -fsS http://127.0.0.1:8080/ready
 Резервируются:
 
 - `/etc/black-swan-dashboard/` без выгрузки секрета в обычный backup;
-- `/var/lib/black-swan-dashboard/latest-analysis.json`;
+- `/var/lib/black-swan-dashboard/runtime/data-refresh.json`;
 - принятые XLSX и итоговые JSON/HTML каждого релиза;
 - журнал версий формул и результаты бэк-тестов;
 - конфигурация reverse proxy и идентификаторы сертификатов.
